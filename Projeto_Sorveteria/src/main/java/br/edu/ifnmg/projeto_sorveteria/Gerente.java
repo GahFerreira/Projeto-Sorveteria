@@ -10,7 +10,7 @@ package br.edu.ifnmg.projeto_sorveteria;
 import java.time.LocalDate;
 
 /**
- * Entidade que representa um adicional de sorvete.
+ * Entidade que representa um gerente.
  *
  * @author GahFerreira
  * @version 1.0, 07/05/2022

@@ -7,7 +7,11 @@
 package br.edu.ifnmg.projeto_sorveteria;
 
 /**
- * Entidade que representa um adicional de sorvete.
+ * Entidade que representa uma associação entre um produto composto e um sabor.
+ * Indica a quantidade de bolas daquele sabor colocada no produto composto.
+ * 
+ * Um exemplo é uma Quantidade que guarda "Chocolate", "Sorvete #1" e "5".
+ * Isso representa que o "Sorvete #1" possui "5" bolas de "Chocolate".
  *
  * @author GahFerreira
  * @version 1.0, 07/05/2022

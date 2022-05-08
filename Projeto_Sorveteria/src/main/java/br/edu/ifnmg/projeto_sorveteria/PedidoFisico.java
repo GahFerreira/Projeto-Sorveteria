@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
- * Entidade que representa um adicional de sorvete.
+ * Entidade que representa um pedido físico feito por um cliente.
  *
  * @author GahFerreira
  * @version 1.0, 07/05/2022

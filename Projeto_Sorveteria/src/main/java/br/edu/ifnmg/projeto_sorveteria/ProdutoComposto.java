@@ -10,7 +10,8 @@ package br.edu.ifnmg.projeto_sorveteria;
 import java.util.ArrayList;
 
 /**
- * Entidade que representa um adicional de sorvete.
+ * Classe abstrata que representa um produto que é composto de vários itens.
+ * Um exemplo é o sorvete, composto por bolas de sorvete, recipiente e adicionais.
  *
  * @author GahFerreira
  * @version 1.0, 07/05/2022

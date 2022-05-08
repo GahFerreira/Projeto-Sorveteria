@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
- * Entidade que representa um adicional de sorvete.
+ * Classe abstrata que representa um pedido feito por um cliente.
  *
  * @author GahFerreira
  * @version 1.0, 07/05/2022
@@ -84,7 +84,7 @@ public abstract class Pedido extends Entidade
     {
         return calcularPrecoTotal();
     }
-//</editor-fold>  
+//</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="ToString">
     

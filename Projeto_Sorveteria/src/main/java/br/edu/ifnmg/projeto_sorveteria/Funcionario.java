@@ -10,7 +10,7 @@ package br.edu.ifnmg.projeto_sorveteria;
 import java.time.LocalDate;
 
 /**
- * Entidade que representa um adicional de sorvete.
+ * Classe abstrata que representa um funcionário.
  *
  * @author GahFerreira
  * @version 1.0, 07/05/2022

@@ -8,7 +8,7 @@
 package br.edu.ifnmg.projeto_sorveteria;
 
 /**
- * Entidade que representa um adicional de sorvete.
+ * Enumeração para representar as categorias de sabor.
  *
  * @author GahFerreira
  * @version 1.0, 07/05/2022

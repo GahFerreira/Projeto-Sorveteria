@@ -8,7 +8,10 @@
 package br.edu.ifnmg.projeto_sorveteria;
 
 /**
- * Entidade que representa um adicional de sorvete.
+ * Entidade que representa um sabor.
+ * 
+ * Pode representar tanto o sabor de bolas de sorvete, 
+ * usadas em sorvetes e milkshakes, ou o sabor de um picolé.
  *
  * @author GahFerreira
  * @version 1.0, 07/05/2022
