@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author GahFerreira
  * @version 1.0, 07/05/2022
  */
-public abstract class Pedido
+public abstract class Pedido extends Entidade
 {
     LocalDateTime data;
     String cliente;

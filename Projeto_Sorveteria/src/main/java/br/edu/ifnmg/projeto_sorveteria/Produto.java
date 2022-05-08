@@ -13,7 +13,7 @@ package br.edu.ifnmg.projeto_sorveteria;
  * @author GahFerreira
  * @version 1.0, 07/05/2022
  */
-public abstract class Produto
+public abstract class Produto extends Entidade
 {
     public abstract Double calcularPreco();
 }

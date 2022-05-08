@@ -15,7 +15,7 @@ import java.time.LocalDate;
  * @author GahFerreira
  * @version 1.0, 07/05/2022
  */
-public abstract class Funcionario
+public abstract class Funcionario extends Entidade
 {
     String nome;
     LocalDate nascimento;
