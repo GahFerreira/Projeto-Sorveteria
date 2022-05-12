@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Entidade que representa um pedido delivery feito por um cliente.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class PedidoDelivery extends Pedido
 {
@@ -24,13 +24,20 @@ public class PedidoDelivery extends Pedido
     
     public PedidoDelivery() {}
 
-    public PedidoDelivery(String endereco, Double frete, LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos)
+    public PedidoDelivery(LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos, String endereco, Double frete)
     {
         super(data, cliente, formaPagamento, produtos);
         this.endereco = endereco;
         this.frete = frete;
     }
-    
+
+    public PedidoDelivery(Long id, LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos, String endereco, Double frete)
+    {
+        super(id, data, cliente, formaPagamento, produtos);
+        this.endereco = endereco;
+        this.frete = frete;
+    }
+
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">

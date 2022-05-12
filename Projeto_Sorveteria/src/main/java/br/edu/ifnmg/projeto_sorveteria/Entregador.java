@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Entidade que representa um entregador.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class Entregador extends Funcionario
 {
@@ -23,13 +23,19 @@ public class Entregador extends Funcionario
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     
     public Entregador() {}
-    
-    public Entregador(ArrayList<PedidoDelivery> pedidos, String nome, LocalDate nascimento, String cpf, Long telefone)
+
+    public Entregador(String nome, LocalDate nascimento, String cpf, Long telefone, ArrayList<PedidoDelivery> pedidos)
     {
         super(nome, nascimento, cpf, telefone);
         this.pedidos = pedidos;
     }
-    
+
+    public Entregador(Long id, String nome, LocalDate nascimento, String cpf, Long telefone, ArrayList<PedidoDelivery> pedidos)
+    {
+        super(id, nome, nascimento, cpf, telefone);
+        this.pedidos = pedidos;
+    }
+
 //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">

@@ -11,7 +11,7 @@ package br.edu.ifnmg.projeto_sorveteria;
  * Entidade que representa um recipiente de sorvete.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class Recipiente extends Entidade
 {
@@ -21,13 +21,20 @@ public class Recipiente extends Entidade
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     
     public Recipiente() {}
-
+    
     public Recipiente(String nome, Double preco)
     {
         this.nome = nome;
         this.preco = preco;
     }
-    
+
+    public Recipiente(Long id, String nome, Double preco)
+    {
+        super(id);
+        this.nome = nome;
+        this.preco = preco;
+    }
+
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">

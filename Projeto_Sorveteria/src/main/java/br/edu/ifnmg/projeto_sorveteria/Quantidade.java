@@ -14,7 +14,7 @@ package br.edu.ifnmg.projeto_sorveteria;
  * Isso representa que o "Sorvete #1" possui "5" bolas de "Chocolate".
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class Quantidade extends Entidade
 {
@@ -26,12 +26,21 @@ public class Quantidade extends Entidade
     
     public Quantidade() {}
     
-    public Quantidade(Sabor sabor, Integer quantidadeBolas)
+    public Quantidade(Sabor sabor, ProdutoComposto produtoComposto, Integer quantidadeBolas)
     {
         this.sabor = sabor;
+        this.produtoComposto = produtoComposto;
         this.quantidadeBolas = quantidadeBolas;
     }
-    
+
+    public Quantidade(Long id, Sabor sabor, ProdutoComposto produtoComposto, Integer quantidadeBolas)
+    {
+        super(id);
+        this.sabor = sabor;
+        this.produtoComposto = produtoComposto;
+        this.quantidadeBolas = quantidadeBolas;
+    }
+
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">

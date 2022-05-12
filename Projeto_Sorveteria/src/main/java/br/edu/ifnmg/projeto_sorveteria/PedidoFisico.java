@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Entidade que representa um pedido físico feito por um cliente.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class PedidoFisico extends Pedido
 {
@@ -23,13 +23,19 @@ public class PedidoFisico extends Pedido
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     
     public PedidoFisico() {}
-
-    public PedidoFisico(Double gorjeta, LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos)
+    
+    public PedidoFisico(LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos, Double gorjeta)
     {
         super(data, cliente, formaPagamento, produtos);
         this.gorjeta = gorjeta;
     }
-    
+
+    public PedidoFisico(Long id, LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos, Double gorjeta)
+    {
+        super(id, data, cliente, formaPagamento, produtos);
+        this.gorjeta = gorjeta;
+    }
+
 //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">

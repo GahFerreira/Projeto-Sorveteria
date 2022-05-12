@@ -7,11 +7,13 @@
 
 package br.edu.ifnmg.projeto_sorveteria;
 
+import java.util.ArrayList;
+
 /**
  * Entidade que representa um milkshake.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class Milkshake extends ProdutoComposto
 {
@@ -21,11 +23,18 @@ public class Milkshake extends ProdutoComposto
     
     public Milkshake() {}
 
-    public Milkshake(Tamanho tamanho)
+    public Milkshake(ArrayList<Quantidade> quantidadeBolasCadaSabor, Tamanho tamanho)
     {
+        super(quantidadeBolasCadaSabor);
         this.tamanho = tamanho;
     }
-    
+
+    public Milkshake(Long id, ArrayList<Quantidade> quantidadeBolasCadaSabor, Tamanho tamanho)
+    {
+        super(id, quantidadeBolasCadaSabor);
+        this.tamanho = tamanho;
+    }
+
 //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">

@@ -13,21 +13,26 @@ import java.time.LocalDate;
  * Entidade que representa um gerente.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class Gerente extends Funcionario
 {
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     
     public Gerente() {}
-
+    
     public Gerente(String nome, LocalDate nascimento, String cpf, Long telefone)
     {
         super(nome, nascimento, cpf, telefone);
     }
     
-//</editor-fold>
+    public Gerente(Long id, String nome, LocalDate nascimento, String cpf, Long telefone)
+    {
+        super(id, nome, nascimento, cpf, telefone);
+    }
 
+//</editor-fold>
+    
     // TODO calcularSalario de Gerente
     @Override
     public Double calcularSalario()

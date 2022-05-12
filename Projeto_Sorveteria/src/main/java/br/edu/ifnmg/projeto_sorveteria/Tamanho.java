@@ -11,7 +11,7 @@ package br.edu.ifnmg.projeto_sorveteria;
  * Entidade que representa um tamanho de milkshake.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class Tamanho extends Entidade
 {
@@ -21,9 +21,16 @@ public class Tamanho extends Entidade
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     
     public Tamanho() {}
-
+    
     public Tamanho(Integer mililitros, Double preco)
     {
+        this.mililitros = mililitros;
+        this.preco = preco;
+    }
+
+    public Tamanho(Long id, Integer mililitros, Double preco)
+    {
+        super(id);
         this.mililitros = mililitros;
         this.preco = preco;
     }

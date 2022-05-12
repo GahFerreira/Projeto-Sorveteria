@@ -11,7 +11,7 @@ package br.edu.ifnmg.projeto_sorveteria;
  * Entidade que representa um picolé.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class Picole extends Produto
 {
@@ -21,13 +21,20 @@ public class Picole extends Produto
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     
     public Picole() {}
-
+    
     public Picole(Tipo tipo, Sabor sabor)
     {
         this.tipo = tipo;
         this.sabor = sabor;
     }
-    
+
+    public Picole(Tipo tipo, Sabor sabor, Long id)
+    {
+        super(id);
+        this.tipo = tipo;
+        this.sabor = sabor;
+    }
+
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">

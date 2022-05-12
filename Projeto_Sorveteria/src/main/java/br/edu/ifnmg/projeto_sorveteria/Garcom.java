@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Entidade que representa um garçom.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class Garcom extends Funcionario
 {
@@ -24,9 +24,15 @@ public class Garcom extends Funcionario
     
     public Garcom() {}
 
-    public Garcom(ArrayList<PedidoFisico> pedidos, String nome, LocalDate nascimento, String cpf, Long telefone)
+    public Garcom(String nome, LocalDate nascimento, String cpf, Long telefone, ArrayList<PedidoFisico> pedidos)
     {
         super(nome, nascimento, cpf, telefone);
+        this.pedidos = pedidos;
+    }
+
+    public Garcom(Long id, String nome, LocalDate nascimento, String cpf, Long telefone, ArrayList<PedidoFisico> pedidos)
+    {
+        super(id, nome, nascimento, cpf, telefone);
         this.pedidos = pedidos;
     }
     

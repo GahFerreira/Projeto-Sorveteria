@@ -13,7 +13,7 @@ import java.time.LocalDate;
  * Classe abstrata que representa um funcionário.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public abstract class Funcionario extends Entidade
 {
@@ -25,7 +25,7 @@ public abstract class Funcionario extends Entidade
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     
     public Funcionario() {}
-
+    
     public Funcionario(String nome, LocalDate nascimento, String cpf, Long telefone)
     {
         this.nome = nome;
@@ -33,7 +33,16 @@ public abstract class Funcionario extends Entidade
         this.cpf = cpf;
         this.telefone = telefone;
     }
-    
+
+    public Funcionario(Long id, String nome, LocalDate nascimento, String cpf, Long telefone)
+    {
+        super(id);
+        this.nome = nome;
+        this.nascimento = nascimento;
+        this.cpf = cpf;
+        this.telefone = telefone;
+    }
+
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">

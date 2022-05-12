@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Classe abstrata que representa um pedido feito por um cliente.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public abstract class Pedido extends Entidade
 {
@@ -26,7 +26,7 @@ public abstract class Pedido extends Entidade
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     
     public Pedido() {}
-
+    
     public Pedido(LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos)
     {
         this.data = data;
@@ -34,7 +34,16 @@ public abstract class Pedido extends Entidade
         this.formaPagamento = formaPagamento;
         this.produtos = produtos;
     }
-    
+
+    public Pedido(Long id, LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos)
+    {
+        super(id);
+        this.data = data;
+        this.cliente = cliente;
+        this.formaPagamento = formaPagamento;
+        this.produtos = produtos;
+    }
+
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">

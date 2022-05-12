@@ -11,7 +11,7 @@ package br.edu.ifnmg.projeto_sorveteria;
  * Entidade que representa um adicional de sorvete.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class Adicional extends Entidade
 {
@@ -21,9 +21,16 @@ public class Adicional extends Entidade
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     
     public Adicional() {}
-
+    
     public Adicional(String nome, Double preco)
     {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    public Adicional(Long id, String nome, Double preco)
+    {
+        super(id);
         this.nome = nome;
         this.preco = preco;
     }

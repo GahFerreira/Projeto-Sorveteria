@@ -14,7 +14,7 @@ package br.edu.ifnmg.projeto_sorveteria;
  * usadas em sorvetes e milkshakes, ou o sabor de um picolé.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class Sabor extends Entidade
 {
@@ -24,12 +24,18 @@ public class Sabor extends Entidade
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     
-    public Sabor()
-    {
-    }
-
+    public Sabor() {}
+    
     public Sabor(String nome, Categoria categoria, Double preco)
     {
+        this.nome = nome;
+        this.categoria = categoria;
+        this.preco = preco;
+    }
+
+    public Sabor(Long id, String nome, Categoria categoria, Double preco)
+    {
+        super(id);
         this.nome = nome;
         this.categoria = categoria;
         this.preco = preco;

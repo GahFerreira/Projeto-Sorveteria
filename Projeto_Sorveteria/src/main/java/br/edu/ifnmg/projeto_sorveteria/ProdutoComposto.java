@@ -11,10 +11,11 @@ import java.util.ArrayList;
 
 /**
  * Classe abstrata que representa um produto que é composto de vários itens.
+ * 
  * Um exemplo é o sorvete, composto por bolas de sorvete, recipiente e adicionais.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public abstract class ProdutoComposto extends Produto
 {
@@ -23,12 +24,18 @@ public abstract class ProdutoComposto extends Produto
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     
     public ProdutoComposto() {}
-
+    
     public ProdutoComposto(ArrayList<Quantidade> quantidadeBolasCadaSabor)
     {
         this.quantidadeBolasCadaSabor = quantidadeBolasCadaSabor;
     }
-    
+
+    public ProdutoComposto(Long id, ArrayList<Quantidade> quantidadeBolasCadaSabor)
+    {
+        super(id);
+        this.quantidadeBolasCadaSabor = quantidadeBolasCadaSabor;
+    }
+
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">

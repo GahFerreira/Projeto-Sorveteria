@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Entidade que representa um sorvete.
  *
  * @author GahFerreira
- * @version 1.0, 07/05/2022
+ * @version 1.1, 11/05/2022
  */
 public class Sorvete extends ProdutoComposto
 {
@@ -23,13 +23,21 @@ public class Sorvete extends ProdutoComposto
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     
     public Sorvete() {}
-
-    public Sorvete(Recipiente recipiente, ArrayList<Adicional> adicionais)
+    
+    public Sorvete(ArrayList<Quantidade> quantidadeBolasCadaSabor, Recipiente recipiente, ArrayList<Adicional> adicionais)
     {
+        super(quantidadeBolasCadaSabor);
         this.recipiente = recipiente;
         this.adicionais = adicionais;
     }
-    
+
+    public Sorvete(Long id, ArrayList<Quantidade> quantidadeBolasCadaSabor, Recipiente recipiente, ArrayList<Adicional> adicionais)
+    {
+        super(id, quantidadeBolasCadaSabor);
+        this.recipiente = recipiente;
+        this.adicionais = adicionais;
+    }
+
 //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
