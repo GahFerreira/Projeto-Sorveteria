@@ -37,28 +37,19 @@ CREATE TABLE Adicional(
 );
 
 
-
-CREATE TABLE Sorvete_bola(
+/*relação sorvete com bolas de diferentes sabores*/
+CREATE TABLE Sorvete_sabor(
 
 	Id BIGINT PRIMARY KEY AUTO_INCREMENT,
     Sorvete_id BIGINT FOREIGN KEY REFERENCES Sorvete(Id),
-    Bola_id BIGINT FOREIGN KEY REFERENCES Bola(Id),
+    Sabor_id BIGINT FOREIGN KEY REFERENCES Sabor(Id),
     Quantidade BIGINT,
-	UNIQUE (Sorvete_id,Bola_id)
+	UNIQUE (Sorvete_id,Sabor_id)
 
 );
 
-CREATE TABLE Bola(
-
-	Id BIGINT PRIMARY KEY AUTO_INCREMENT,
-	Sabor_id BIGINT FOREIGN KEY REFERENCES Sabor(Id)
-    
-
-
-);
 
 CREATE TABLE Sabor(
-
 
 	Id BIGINT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(100),
@@ -83,13 +74,13 @@ CREATE TABLE Tamanho(
 
 );
 
-CREATE TABLE Milkshake_bola(
+CREATE TABLE Milkshake_sabor(
 
     Id BIGINT PRIMARY KEY AUTO_INCREMENT,
     Milkshake_id BIGINT FOREIGN KEY REFERENCES Milkshake(Id),
-    Bola_id BIGINT FOREIGN KEY REFERENCES Bola(Id),
+    Sabor_id BIGINT FOREIGN KEY REFERENCES Sabor(Id),
     Quantidade BIGINT,
-	UNIQUE (Milkshake_id,Bola_id)
+	UNIQUE (Milkshake_id,Sabor_id)
 
 
 );
@@ -263,3 +254,6 @@ CREATE TABLE Entregador_pedido(
     
 
 );
+
+
+
