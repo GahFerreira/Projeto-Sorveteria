@@ -9,10 +9,8 @@ CREATE TABLE Sorvete(
 CREATE TABLE Recipiente(
 
 	Id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    Nome VARCHAR(100),
-    Preco DOUBLE
-
-
+	Nome VARCHAR(100),
+	Preco DOUBLE
 );
 
 
@@ -235,30 +233,19 @@ CREATE TABLE Gerente(
 
 
 
-
-
-
-
-
-
-
-
 CREATE TABLE Garcom_pedido(
 
 	Id BIGINT PRIMARY KEY AUTO_INCREMENT,
     Garcom_id BIGINT FOREIGN KEY REFERENCES Garcom(Id),
     Pedido_id BIGINT FOREIGN KEY REFERENCES Pedido(Id)
     
-    
-
-
 );
 
 
 CREATE TABLE Entregador_pedido(
 
-	Id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    Entregador_id BIGINT FOREIGN KEY REFERENCES Entregador(Id),
+Id BIGINT PRIMARY KEY AUTO_INCREMENT,
+Entregador_id BIGINT FOREIGN KEY REFERENCES Entregador(Id),
     Pedido_id BIGINT FOREIGN KEY REFERENCES Pedido(Id)
     
 
