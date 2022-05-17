@@ -15,7 +15,8 @@ import java.sql.ResultSet;
  * @author GahFerreira
  * @version 1.0, 16/05/2022
  */
-public class TamanhoDao extends Dao<Tamanho, Long>
+public class TamanhoDao
+        extends Dao<Tamanho, Long>
 {
     @Override
     public String obterSentencaInsert()
@@ -48,13 +49,13 @@ public class TamanhoDao extends Dao<Tamanho, Long>
         {
             pstmt.setInt(1, e.getMililitros());
             pstmt.setDouble(2, e.getPreco());
-            
+
             if (e.getId() != null && e.getId() != 0)
             {
                 pstmt.setLong(3, e.getId());
             }
         }
-        
+
         catch (Exception ex)
         {
             System.out.println("Falha na Montagem da Declaração SQL de Tamanho: " + ex);
@@ -65,20 +66,19 @@ public class TamanhoDao extends Dao<Tamanho, Long>
     public Tamanho extrairObjeto(ResultSet resultSet)
     {
         Tamanho tamanho = null;
-        
+
         try
         {
             tamanho = new Tamanho(resultSet.getLong("id"),
-                    resultSet.getInt("mililitros"),
-                    resultSet.getDouble("preco"));
+                                  resultSet.getInt("mililitros"),
+                                  resultSet.getDouble("preco"));
         }
-        
-        catch(Exception ex)
+
+        catch (Exception ex)
         {
             System.out.println("Erro na extração de Tamanho do Banco de Dados: " + ex);
         }
-        
+
         return tamanho;
     }
-    
 }

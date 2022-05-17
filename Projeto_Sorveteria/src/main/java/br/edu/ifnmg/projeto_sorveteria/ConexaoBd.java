@@ -23,8 +23,8 @@ import java.util.logging.Logger;
  * @author Luis Guisso &lt;luis dot guisso at ifnmg dot edu dot br&gt;
  * @version 0.2, 19/04/2022
  */
-public class ConexaoBd {
-
+public class ConexaoBd
+{
     // Retém a conexão estabelecida com o banco de dados durante a operação do sistema.
     private static Connection conexao;
 
@@ -41,13 +41,14 @@ public class ConexaoBd {
     private static final String SENHA;
 
     // Inicialização de atributos estáticos.
-    static {
+    static
+    {
         // Servidor Local
-        URL = "jdbc:mysql://127.0.0.1:3306/sistema"
-                + "?useUnicode=true"
-                + "&useJDBCCompliantTimezoneShift=true"
-                + "&serverTimezone=UTC"
-                + "&autoReconnect=true";
+        URL = "jdbc:mysql://127.0.0.1:3306/sistema" +
+              "?useUnicode=true" +
+              "&useJDBCCompliantTimezoneShift=true" +
+              "&serverTimezone=UTC" +
+              "&autoReconnect=true";
         USUARIO = "root";
         SENHA = "";
     }
@@ -58,7 +59,8 @@ public class ConexaoBd {
      * getConexao() sem que seja requerida a  geração de novos objetos
      * ConexaoBd ConexaoBd.
      */
-    private ConexaoBd() {
+    private ConexaoBd()
+    {
     }
     //</editor-fold>
 
@@ -67,17 +69,22 @@ public class ConexaoBd {
      *
      * @return Conexão com o banco de dados.
      */
-    public static Connection getConexao() {
-
+    public static Connection getConexao()
+    {
         // Se não há uma conexão estabelecida...
-        if (conexao == null) {
+        if (conexao == null)
+        {
             // ... tenta ...
-            try {
+            try
+            {
                 // ... estabelecer e reter a conexão a partir da URL,
                 // do usuário e da senha fornecidos
                 System.out.println(">> Nova conexão estabelecida com o banco de dados");
                 conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
-            } catch (SQLException ex) {
+            }
+
+            catch (SQLException ex)
+            {
                 // TODO Rever procedimento e encerrar o programa em caso de falha
                 // Registra falha
                 Logger.getLogger(ConexaoBd.class.getName()).log(Level.SEVERE, null, ex);

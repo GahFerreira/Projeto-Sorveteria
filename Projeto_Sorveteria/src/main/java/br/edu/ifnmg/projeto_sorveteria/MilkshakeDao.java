@@ -13,45 +13,71 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Milkshake no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.0, 16/05/2022
+ * @version 1.1, 17/05/2022
  */
-public class MilkshakeDao extends Dao<Milkshake, Long>
+public class MilkshakeDao
+        extends Dao<Milkshake, Long>
 {
     @Override
     public String obterSentencaInsert()
     {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "insert into milkshake (idTamanho) values (?);";
     }
 
     @Override
     public String obterSentencaUpdate()
     {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "update milkshake set idTamanho = ? where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "select id, idTamanho from milkshake where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "select id, idTamanho from milkshake where excluido = false;";
     }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Milkshake e)
     {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try
+        {
+            pstmt.setLong(1, e.getTamanho().getId());
+
+            if (e.getId() != null && e.getId() != 0)
+            {
+                pstmt.setLong(2, e.getId());
+            }
+        }
+
+        catch (Exception ex)
+        {
+            System.out.println("Falha na Montagem da Declaração SQL de Milkshake: " + ex);
+        }
     }
 
     @Override
     public Milkshake extrairObjeto(ResultSet resultSet)
     {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Milkshake milkshake = null;
+
+        try
+        {
+            milkshake = new Milkshake(resultSet.getLong("id"),
+                                      null,
+                                      null);
+        }
+
+        catch (Exception ex)
+        {
+            System.out.println("Erro na extração de Milkshake do Banco de Dados: " + ex);
+        }
+
+        return milkshake;
     }
-    
-    
 }

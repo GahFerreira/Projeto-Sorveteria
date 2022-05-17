@@ -9,23 +9,25 @@ package br.edu.ifnmg.projeto_sorveteria;
 /**
  * Entidade que representa uma associação entre um produto composto e um sabor.
  * Indica a quantidade de bolas daquele sabor colocada no produto composto.
- * 
+ *
  * Um exemplo é uma Quantidade que guarda "Chocolate", "Sorvete #1" e "5".
  * Isso representa que o "Sorvete #1" possui "5" bolas de "Chocolate".
  *
  * @author GahFerreira
- * @version 1.1, 11/05/2022
+ * @version 1.2, 17/05/2022
  */
-public class Quantidade extends Entidade
+public class Quantidade
+        extends Entidade
 {
     Sabor sabor;
     ProdutoComposto produtoComposto;
     Integer quantidadeBolas;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
-    
-    public Quantidade() {}
-    
+    public Quantidade()
+    {
+    }
+
     public Quantidade(Sabor sabor, ProdutoComposto produtoComposto, Integer quantidadeBolas)
     {
         this.sabor = sabor;
@@ -40,11 +42,9 @@ public class Quantidade extends Entidade
         this.produtoComposto = produtoComposto;
         this.quantidadeBolas = quantidadeBolas;
     }
-
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
-    
     public Sabor getSabor()
     {
         return sabor;
@@ -64,16 +64,23 @@ public class Quantidade extends Entidade
     {
         this.quantidadeBolas = quantidadeBolas;
     }
-    
+
+    public ProdutoComposto getProdutoComposto()
+    {
+        return produtoComposto;
+    }
+
+    public void setProdutoComposto(ProdutoComposto produtoComposto)
+    {
+        this.produtoComposto = produtoComposto;
+    }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="ToString">
-    
     @Override
     public String toString()
     {
         return "Quantidade{" + "sabor=" + sabor + ", quantidadeBolas=" + quantidadeBolas + '}';
     }
-    
 //</editor-fold>
 }

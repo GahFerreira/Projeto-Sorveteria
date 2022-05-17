@@ -13,9 +13,10 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Quantidade no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.0, 16/05/2022
+ * @version 1.1, 17/05/2022
  */
-public class QuantidadeDao extends Dao<Quantidade, Long>
+public class QuantidadeDao
+        extends Dao<Quantidade, Long>
 {
     @Override
     public String obterSentencaInsert()
@@ -32,13 +33,13 @@ public class QuantidadeDao extends Dao<Quantidade, Long>
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select saborId, produtoCompostoId, quantidadeBolas from quantidade where id = ?;";
+        return "select id, saborId, produtoCompostoId, quantidadeBolas from quantidade where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select saborId, produtoCompostoId, quantidadeBolas from quantidade where excluido = false;";
+        return "select id, saborId, produtoCompostoId, quantidadeBolas from quantidade where excluido = false;";
     }
 
     @Override
@@ -49,13 +50,13 @@ public class QuantidadeDao extends Dao<Quantidade, Long>
             pstmt.setLong(1, e.getSabor().getId());
             pstmt.setLong(2, e.getProdutoComposto().getId());
             pstmt.setInt(3, e.getQuantidadeBolas());
-            
+
             if (e.getId() != null && e.getId() != 0)
             {
                 pstmt.setLong(4, e.getId());
             }
         }
-        
+
         catch (Exception ex)
         {
             System.out.println("Falha na Montagem da Declaração SQL de Quantidade: " + ex);
@@ -66,21 +67,21 @@ public class QuantidadeDao extends Dao<Quantidade, Long>
     public Quantidade extrairObjeto(ResultSet resultSet)
     {
         Quantidade quantidade = null;
-        
+
         try
         {
             // TODO Obter sabor e produto composto de Quantidade
-            
+
             quantidade = new Quantidade(null,
                                         null,
                                         resultSet.getInt("quantidadeBolas"));
         }
-        
-        catch(Exception ex)
+
+        catch (Exception ex)
         {
             System.out.println("Erro na extração de Quantidade do Banco de Dados: " + ex);
         }
-        
+
         return quantidade;
     }
 }

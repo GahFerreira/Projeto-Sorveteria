@@ -4,7 +4,6 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria;
 
 /**
@@ -13,15 +12,17 @@ package br.edu.ifnmg.projeto_sorveteria;
  * @author GahFerreira
  * @version 1.1, 11/05/2022
  */
-public class Recipiente extends Entidade
+public class Recipiente
+        extends Entidade
 {
     String nome;
     Double preco;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
-    
-    public Recipiente() {}
-    
+    public Recipiente()
+    {
+    }
+
     public Recipiente(String nome, Double preco)
     {
         this.nome = nome;
@@ -34,11 +35,9 @@ public class Recipiente extends Entidade
         this.nome = nome;
         this.preco = preco;
     }
-
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
-    
     public String getNome()
     {
         return nome;
@@ -58,16 +57,13 @@ public class Recipiente extends Entidade
     {
         this.preco = preco;
     }
-    
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="ToString">
-    
     @Override
     public String toString()
     {
         return "Recipiente{" + "nome=" + nome + ", preco=" + preco + '}';
     }
-    
 //</editor-fold>
 }

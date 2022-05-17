@@ -15,14 +15,16 @@ import java.util.ArrayList;
  * @author GahFerreira
  * @version 1.1, 11/05/2022
  */
-public class PedidoDelivery extends Pedido
+public class PedidoDelivery
+        extends Pedido
 {
     String endereco;
     Double frete;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
-    
-    public PedidoDelivery() {}
+    public PedidoDelivery()
+    {
+    }
 
     public PedidoDelivery(LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos, String endereco, Double frete)
     {
@@ -37,11 +39,9 @@ public class PedidoDelivery extends Pedido
         this.endereco = endereco;
         this.frete = frete;
     }
-
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
-    
     public String getEndereco()
     {
         return endereco;
@@ -61,17 +61,14 @@ public class PedidoDelivery extends Pedido
     {
         this.frete = frete;
     }
-    
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="ToString">
-    
     @Override
     public String toString()
     {
         return "PedidoDelivery{" + "endereco=" + endereco + ", frete=" + frete + '}';
     }
-    
 //</editor-fold>
 
     // TODO calcularPrecoTotal de PedidoDelivery

@@ -13,9 +13,10 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Picole no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.0, 16/05/2022
+ * @version 1.1, 17/05/2022
  */
-public class PicoleDao extends Dao<Picole, Long>
+public class PicoleDao
+        extends Dao<Picole, Long>
 {
     @Override
     public String obterSentencaInsert()
@@ -32,13 +33,13 @@ public class PicoleDao extends Dao<Picole, Long>
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select tipo, idSabor from picole where id = ?;";
+        return "select id, tipo, idSabor from picole where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select tipo, idSabor from picole where excluido = false;";
+        return "select id, tipo, idSabor from picole where excluido = false;";
     }
 
     @Override
@@ -48,13 +49,13 @@ public class PicoleDao extends Dao<Picole, Long>
         {
             pstmt.setString(1, e.getTipo().name());
             pstmt.setLong(2, e.getSabor().getId());
-            
+
             if (e.getId() != null && e.getId() != 0)
             {
                 pstmt.setLong(3, e.getId());
             }
         }
-        
+
         catch (Exception ex)
         {
             System.out.println("Falha na Montagem da Declaração SQL de Picole: " + ex);
@@ -65,21 +66,21 @@ public class PicoleDao extends Dao<Picole, Long>
     public Picole extrairObjeto(ResultSet resultSet)
     {
         Picole picole = null;
-        
+
         try
         {
             // TODO Obter o sabor do picolé do Banco de Dados
-            
+
             picole = new Picole(resultSet.getLong("id"),
                                 Tipo.valueOf(resultSet.getString("tipo")),
                                 null);
         }
-        
-        catch(Exception ex)
+
+        catch (Exception ex)
         {
             System.out.println("Erro na extração de Picole do Banco de Dados: " + ex);
         }
-        
+
         return picole;
     }
 }

@@ -4,41 +4,40 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria;
 
 /**
  * Entidade que representa um picolé.
  *
  * @author GahFerreira
- * @version 1.1, 11/05/2022
+ * @version 1.2, 17/05/2022
  */
-public class Picole extends Produto
+public class Picole
+        extends Produto
 {
     private Tipo tipo;
     private Sabor sabor;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
-    
-    public Picole() {}
-    
+    public Picole()
+    {
+    }
+
     public Picole(Tipo tipo, Sabor sabor)
     {
         this.tipo = tipo;
         this.sabor = sabor;
     }
 
-    public Picole(Tipo tipo, Sabor sabor, Long id)
+    public Picole(Long id, Tipo tipo, Sabor sabor)
     {
         super(id);
         this.tipo = tipo;
         this.sabor = sabor;
     }
-
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
-    
     public Tipo getTipo()
     {
         return tipo;
@@ -58,7 +57,6 @@ public class Picole extends Produto
     {
         this.sabor = sabor;
     }
-    
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="ToString">

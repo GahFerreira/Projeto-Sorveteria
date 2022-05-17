@@ -4,7 +4,6 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria;
 
 import java.sql.PreparedStatement;
@@ -14,9 +13,10 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe PedidoDelivery no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.0, 16/05/2022
+ * @version 1.1, 17/05/2022
  */
-public class PedidoDeliveryDao extends Dao<PedidoDelivery, Long>
+public class PedidoDeliveryDao
+        extends Dao<PedidoDelivery, Long>
 {
     @Override
     public String obterSentencaInsert()
@@ -33,13 +33,13 @@ public class PedidoDeliveryDao extends Dao<PedidoDelivery, Long>
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select data, cliente, formaPagamento, endereco, frete from pessoafisica where id = ?;";
+        return "select id, data, cliente, formaPagamento, endereco, frete from pessoafisica where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select data, cliente, formaPagamento, endereco, frete from pessoafisica where excluido = false;";
+        return "select id, data, cliente, formaPagamento, endereco, frete from pessoafisica where excluido = false;";
     }
 
     @Override
@@ -52,13 +52,13 @@ public class PedidoDeliveryDao extends Dao<PedidoDelivery, Long>
             pstmt.setString(3, e.getFormaPagamento());
             pstmt.setString(4, e.getEndereco());
             pstmt.setDouble(5, e.getFrete());
-            
+
             if (e.getId() != null && e.getId() != 0)
             {
                 pstmt.setLong(6, e.getId());
             }
         }
-        
+
         catch (Exception ex)
         {
             System.out.println("Falha na Montagem da Declaração SQL de PedidoDelivery: " + ex);
@@ -69,7 +69,7 @@ public class PedidoDeliveryDao extends Dao<PedidoDelivery, Long>
     public PedidoDelivery extrairObjeto(ResultSet resultSet)
     {
         PedidoDelivery pedidoDelivery = null;
-        
+
         try
         {
             pedidoDelivery = new PedidoDelivery(resultSet.getLong("id"),
@@ -80,12 +80,12 @@ public class PedidoDeliveryDao extends Dao<PedidoDelivery, Long>
                                                 resultSet.getString("endereco"),
                                                 resultSet.getDouble("frete"));
         }
-        
-        catch(Exception ex)
+
+        catch (Exception ex)
         {
             System.out.println("Erro na extração de PedidoDelivery do Banco de Dados: " + ex);
         }
-        
+
         return pedidoDelivery;
     }
 }

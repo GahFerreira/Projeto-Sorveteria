@@ -4,7 +4,6 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria;
 
 import java.sql.PreparedStatement;
@@ -14,9 +13,10 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Sabor no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.0, 16/05/2022
+ * @version 1.1, 17/05/2022
  */
-public class SaborDao extends Dao<Sabor, Long>
+public class SaborDao
+        extends Dao<Sabor, Long>
 {
     @Override
     public String obterSentencaInsert()
@@ -33,13 +33,13 @@ public class SaborDao extends Dao<Sabor, Long>
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select nome, categoria, preco from sabor where id = ?;";
+        return "select id, nome, categoria, preco from sabor where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select nome, categoria, preco from sabor where excluido = false;";
+        return "select id, nome, categoria, preco from sabor where excluido = false;";
     }
 
     @Override
@@ -50,13 +50,13 @@ public class SaborDao extends Dao<Sabor, Long>
             pstmt.setString(1, e.getNome());
             pstmt.setString(2, e.getCategoria().name()); // TODO Confirmar que é assim que coloca Enum em PreparedStatement
             pstmt.setDouble(3, e.getPreco());
-            
+
             if (e.getId() != null && e.getId() != 0)
             {
                 pstmt.setLong(4, e.getId());
             }
         }
-        
+
         catch (Exception ex)
         {
             System.out.println("Falha na Montagem da Declaração SQL de Sabor: " + ex);
@@ -67,21 +67,20 @@ public class SaborDao extends Dao<Sabor, Long>
     public Sabor extrairObjeto(ResultSet resultSet)
     {
         Sabor sabor = null;
-        
+
         try
         {
             sabor = new Sabor(resultSet.getLong("id"),
                               resultSet.getString("nome"),
-                              Categoria.valueOf(resultSet.getString("categoria")),  // TODO Confirmar que é assim que extrai Enum de ResultSet
+                              Categoria.valueOf(resultSet.getString("categoria")), // TODO Confirmar que é assim que extrai Enum de ResultSet
                               resultSet.getDouble("preco"));
         }
-        
-        catch(Exception ex)
+
+        catch (Exception ex)
         {
             System.out.println("Falha na Montagem da Declaração SQL de Sabor: " + ex);
         }
-        
+
         return sabor;
     }
-
 }

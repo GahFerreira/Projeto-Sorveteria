@@ -17,12 +17,13 @@ package br.edu.ifnmg.projeto_sorveteria;
  * @author Luis Guisso &lt;luis dot guisso at ifnmg dot edu dot br&gt;
  * @version 0.1, 18/04/2022
  */
-public interface IDao<E, K> {
-
+public interface IDao<E, K>
+{
     /**
      * Operação de salvamento de entidade no banco de dados
      *
      * @param e Entidade a ser salva
+     *
      * @return Chave primária da entidade salva
      */
     public K salvar(E e);

@@ -4,7 +4,6 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria;
 
 import java.time.LocalDate;
@@ -15,7 +14,8 @@ import java.time.LocalDate;
  * @author GahFerreira
  * @version 1.1, 11/05/2022
  */
-public abstract class Funcionario extends Entidade
+public abstract class Funcionario
+        extends Entidade
 {
     String nome;
     LocalDate nascimento;
@@ -23,9 +23,10 @@ public abstract class Funcionario extends Entidade
     Long telefone;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
-    
-    public Funcionario() {}
-    
+    public Funcionario()
+    {
+    }
+
     public Funcionario(String nome, LocalDate nascimento, String cpf, Long telefone)
     {
         this.nome = nome;
@@ -42,11 +43,9 @@ public abstract class Funcionario extends Entidade
         this.cpf = cpf;
         this.telefone = telefone;
     }
-
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
-    
     public String getNome()
     {
         return nome;
@@ -86,18 +85,15 @@ public abstract class Funcionario extends Entidade
     {
         this.telefone = telefone;
     }
-    
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="ToString">
-    
     @Override
     public String toString()
     {
         return "Funcionario{" + "nome=" + nome + ", nascimento=" + nascimento + ", cpf=" + cpf + ", telefone=" + telefone + '}';
     }
-    
 //</editor-fold>
-    
+
     public abstract Double calcularSalario();
 }

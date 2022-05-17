@@ -13,11 +13,12 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Garcom no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.0, 16/05/2022
+ * @version 1.1, 17/05/2022
  */
 
 // TODO Implementar o trabalho com a lista de pedidos físicos
-public class GarcomDao extends Dao<Garcom, Long>
+public class GarcomDao
+        extends Dao<Garcom, Long>
 {
     @Override
     public String obterSentencaInsert()
@@ -34,13 +35,13 @@ public class GarcomDao extends Dao<Garcom, Long>
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select nome, nascimento, cpf, telefone from garcom where id = ?;";
+        return "select id, nome, nascimento, cpf, telefone from garcom where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select nome, nascimento, cpf, telefone from garcom where excluido = false;";
+        return "select id, nome, nascimento, cpf, telefone from garcom where excluido = false;";
     }
 
     @Override
@@ -52,13 +53,13 @@ public class GarcomDao extends Dao<Garcom, Long>
             pstmt.setDate(2, java.sql.Date.valueOf(e.getNascimento()));
             pstmt.setString(3, e.getCpf());
             pstmt.setLong(4, e.getTelefone());
-            
+
             if (e.getId() != null && e.getId() != 0)
             {
                 pstmt.setLong(5, e.getId());
             }
         }
-        
+
         catch (Exception ex)
         {
             System.out.println("Falha na Montagem da Declaração SQL de Gerente: " + ex);
@@ -69,7 +70,7 @@ public class GarcomDao extends Dao<Garcom, Long>
     public Garcom extrairObjeto(ResultSet resultSet)
     {
         Garcom garcom = null;
-        
+
         try
         {
             garcom = new Garcom(resultSet.getLong("id"),
@@ -79,12 +80,12 @@ public class GarcomDao extends Dao<Garcom, Long>
                                 resultSet.getLong("telefone"),
                                 null);
         }
-        
-        catch(Exception ex)
+
+        catch (Exception ex)
         {
             System.out.println("Erro na extração de Garcom do Banco de Dados: " + ex);
         }
-        
+
         return garcom;
     }
 }

@@ -4,7 +4,6 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria;
 
 import java.time.LocalDate;
@@ -16,13 +15,15 @@ import java.util.ArrayList;
  * @author GahFerreira
  * @version 1.1, 11/05/2022
  */
-public class Garcom extends Funcionario
+public class Garcom
+        extends Funcionario
 {
     ArrayList<PedidoFisico> pedidos;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
-    
-    public Garcom() {}
+    public Garcom()
+    {
+    }
 
     public Garcom(String nome, LocalDate nascimento, String cpf, Long telefone, ArrayList<PedidoFisico> pedidos)
     {
@@ -35,11 +36,9 @@ public class Garcom extends Funcionario
         super(id, nome, nascimento, cpf, telefone);
         this.pedidos = pedidos;
     }
-    
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
-    
     public ArrayList<PedidoFisico> getPedidos()
     {
         return pedidos;
@@ -49,17 +48,14 @@ public class Garcom extends Funcionario
     {
         this.pedidos = pedidos;
     }
-    
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="ToString">
-    
     @Override
     public String toString()
     {
         return "Garcom{" + "pedidos=" + pedidos + '}';
     }
-    
 //</editor-fold>
 
     // TODO calcularSalario de Garcom

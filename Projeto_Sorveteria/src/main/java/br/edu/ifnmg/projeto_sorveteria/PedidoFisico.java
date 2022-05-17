@@ -4,7 +4,6 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria;
 
 import java.time.LocalDateTime;
@@ -16,14 +15,16 @@ import java.util.ArrayList;
  * @author GahFerreira
  * @version 1.1, 11/05/2022
  */
-public class PedidoFisico extends Pedido
+public class PedidoFisico
+        extends Pedido
 {
     Double gorjeta;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
-    
-    public PedidoFisico() {}
-    
+    public PedidoFisico()
+    {
+    }
+
     public PedidoFisico(LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos, Double gorjeta)
     {
         super(data, cliente, formaPagamento, produtos);
@@ -35,11 +36,9 @@ public class PedidoFisico extends Pedido
         super(id, data, cliente, formaPagamento, produtos);
         this.gorjeta = gorjeta;
     }
-
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
-    
     public Double getGorjeta()
     {
         return gorjeta;
@@ -49,17 +48,14 @@ public class PedidoFisico extends Pedido
     {
         this.gorjeta = gorjeta;
     }
-    
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="ToString">
-    
     @Override
     public String toString()
     {
         return "PedidoFisico{" + "gorjeta=" + gorjeta + '}';
     }
-    
 //</editor-fold>
 
     // TODO calcularPrecoTotal de PedidoFisico
@@ -75,12 +71,4 @@ public class PedidoFisico extends Pedido
     {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    
-
-    
-    
-    
-    
-    
 }

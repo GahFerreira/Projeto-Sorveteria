@@ -4,7 +4,6 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria;
 
 import java.sql.PreparedStatement;
@@ -16,7 +15,8 @@ import java.sql.ResultSet;
  * @author GahFerreira
  * @version 1.0, 16/05/2022
  */
-public class AdicionalDao extends Dao<Adicional, Long>
+public class AdicionalDao
+        extends Dao<Adicional, Long>
 {
     @Override
     public String obterSentencaInsert()
@@ -49,13 +49,13 @@ public class AdicionalDao extends Dao<Adicional, Long>
         {
             pstmt.setString(1, e.getNome());
             pstmt.setDouble(2, e.getPreco());
-            
+
             if (e.getId() != null && e.getId() != 0)
             {
                 pstmt.setLong(3, e.getId());
             }
         }
-        
+
         catch (Exception ex)
         {
             System.out.println("Falha na Montagem da Declaração SQL de Adicional: " + ex);
@@ -66,19 +66,19 @@ public class AdicionalDao extends Dao<Adicional, Long>
     public Adicional extrairObjeto(ResultSet resultSet)
     {
         Adicional adicional = null;
-        
+
         try
         {
             adicional = new Adicional(resultSet.getLong("id"),
                                       resultSet.getString("nome"),
                                       resultSet.getDouble("peso"));
         }
-        
-        catch(Exception ex)
+
+        catch (Exception ex)
         {
             System.out.println("Erro na extração de Adicional do Banco de Dados: " + ex);
         }
-        
+
         return adicional;
     }
 }

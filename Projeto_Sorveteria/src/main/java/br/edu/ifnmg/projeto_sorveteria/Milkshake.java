@@ -4,7 +4,6 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria;
 
 import java.util.ArrayList;
@@ -15,13 +14,15 @@ import java.util.ArrayList;
  * @author GahFerreira
  * @version 1.1, 11/05/2022
  */
-public class Milkshake extends ProdutoComposto
+public class Milkshake
+        extends ProdutoComposto
 {
     Tamanho tamanho;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
-    
-    public Milkshake() {}
+    public Milkshake()
+    {
+    }
 
     public Milkshake(ArrayList<Quantidade> quantidadeBolasCadaSabor, Tamanho tamanho)
     {
@@ -34,11 +35,9 @@ public class Milkshake extends ProdutoComposto
         super(id, quantidadeBolasCadaSabor);
         this.tamanho = tamanho;
     }
-
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
-    
     public Tamanho getTamanho()
     {
         return tamanho;
@@ -48,17 +47,14 @@ public class Milkshake extends ProdutoComposto
     {
         this.tamanho = tamanho;
     }
-    
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="ToString">
-    
     @Override
     public String toString()
     {
         return "Milkshake{" + "tamanho=" + tamanho + '}';
     }
-    
 //</editor-fold>
 
     @Override

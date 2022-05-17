@@ -4,7 +4,6 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria;
 
 import java.sql.PreparedStatement;
@@ -14,9 +13,10 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Entregador no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.0, 16/05/2022
+ * @version 1.1, 17/05/2022
  */
-public class EntregadorDao extends Dao<Entregador, Long> 
+public class EntregadorDao
+        extends Dao<Entregador, Long>
 {
     @Override
     public String obterSentencaInsert()
@@ -33,13 +33,13 @@ public class EntregadorDao extends Dao<Entregador, Long>
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select nome, nascimento, cpf, telefone from entregador where id = ?;";
+        return "select id, nome, nascimento, cpf, telefone from entregador where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select nome, nascimento, cpf, telefone from entregador where excluido = false;";
+        return "select id, nome, nascimento, cpf, telefone from entregador where excluido = false;";
     }
 
     @Override
@@ -51,7 +51,7 @@ public class EntregadorDao extends Dao<Entregador, Long>
             pstmt.setDate(2, java.sql.Date.valueOf(e.getNascimento()));
             pstmt.setString(3, e.getCpf());
             pstmt.setLong(4, e.getTelefone());
-            
+
             if (e.getId() != null && e.getId() != 0)
             {
                 pstmt.setLong(5, e.getId());
@@ -67,6 +67,7 @@ public class EntregadorDao extends Dao<Entregador, Long>
     public Entregador extrairObjeto(ResultSet resultSet)
     {
         Entregador entregador = null;
+
         try
         {
             entregador = new Entregador(resultSet.getLong("id"),
@@ -76,10 +77,12 @@ public class EntregadorDao extends Dao<Entregador, Long>
                                         resultSet.getLong("telefone"),
                                         null);
         }
+
         catch (Exception ex)
         {
             System.out.println("Erro na extração de Entregador do Banco de Dados: " + ex);
         }
+
         return entregador;
     }
 }

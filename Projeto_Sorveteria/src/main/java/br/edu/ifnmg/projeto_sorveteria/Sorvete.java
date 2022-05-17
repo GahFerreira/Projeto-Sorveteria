@@ -4,7 +4,6 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria;
 
 import java.util.ArrayList;
@@ -15,15 +14,17 @@ import java.util.ArrayList;
  * @author GahFerreira
  * @version 1.1, 11/05/2022
  */
-public class Sorvete extends ProdutoComposto
+public class Sorvete
+        extends ProdutoComposto
 {
     Recipiente recipiente;
     ArrayList<Adicional> adicionais;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
-    
-    public Sorvete() {}
-    
+    public Sorvete()
+    {
+    }
+
     public Sorvete(ArrayList<Quantidade> quantidadeBolasCadaSabor, Recipiente recipiente, ArrayList<Adicional> adicionais)
     {
         super(quantidadeBolasCadaSabor);
@@ -37,11 +38,9 @@ public class Sorvete extends ProdutoComposto
         this.recipiente = recipiente;
         this.adicionais = adicionais;
     }
-
 //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
 
+    //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Recipiente getRecipiente()
     {
         return recipiente;
@@ -61,17 +60,14 @@ public class Sorvete extends ProdutoComposto
     {
         this.adicionais = adicionais;
     }
-    
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="ToString">
-    
     @Override
     public String toString()
     {
         return "Sorvete{" + "recipiente=" + recipiente + ", adicionais=" + adicionais + '}';
     }
-    
 //</editor-fold>
 
     @Override

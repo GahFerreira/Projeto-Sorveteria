@@ -25,23 +25,24 @@ import java.util.List;
  * @version 0.2, 27/04/2022
  */
 public abstract class Dao<E, K>
-        implements IDao<E, K> {
-
+        implements IDao<E, K>
+{
     @Override
-    public K salvar(E e) {
-
+    public K salvar(E e)
+    {
         // Chave primária de resposta
         Long id = 0L;
 
-        if (((Entidade) e).getId() == null
-                || ((Entidade) e).getId() == 0) {
+        if (((Entidade) e).getId() == null ||
+            ((Entidade) e).getId() == 0)
+        {
             // Inserir novo registro
             // try-with-resources
             try ( PreparedStatement preparedStatement
-                    = ConexaoBd.getConexao().prepareStatement(
+                                    = ConexaoBd.getConexao().prepareStatement(
                             obterSentencaInsert(),
-                            Statement.RETURN_GENERATED_KEYS)) {
-
+                            Statement.RETURN_GENERATED_KEYS))
+            {
                 // Monta a declaração SQL com os dados (->?)
                 montarDeclaracao(preparedStatement, e);
 
@@ -55,22 +56,26 @@ public abstract class Dao<E, K>
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
                 // Movimenta para o primeiro dado recuperado
-                if (resultSet.next()) {
-
+                if (resultSet.next())
+                {
                     // Recupera a chave primária retornada
                     id = resultSet.getLong(1);
                 }
-
-            } catch (Exception ex) {
-                System.out.println(">> " + ex);
             }
 
-        } else {
+            catch (Exception ex)
+            {
+                System.out.println(">> " + ex);
+            }
+        }
+
+        else
+        {
             // Atualizar registro existente
             try ( PreparedStatement preparedStatement
-                    = ConexaoBd.getConexao().prepareStatement(
-                            obterSentencaUpdate())) {
-
+                                    = ConexaoBd.getConexao().prepareStatement(
+                            obterSentencaUpdate()))
+            {
                 // Monta a declaração SQL com os dados (->?)
                 montarDeclaracao(preparedStatement, e);
 
@@ -82,8 +87,10 @@ public abstract class Dao<E, K>
 
                 // Mantém a chave primária
                 id = ((Entidade) e).getId();
+            }
 
-            } catch (Exception ex) {
+            catch (Exception ex)
+            {
                 System.out.println("Exception: " + ex);
             }
         }
@@ -95,27 +102,31 @@ public abstract class Dao<E, K>
      * Recupera um objeto do banco de dados.
      *
      * @param id Chave primária
+     *
      * @return Objeto buscado
      */
-    public E localizarPorId(K id) {
+    public E localizarPorId(K id)
+    {
         try ( PreparedStatement preparedStatement
-                = ConexaoBd.getConexao().prepareStatement(obterSentencaLocalizarPorId())) {
-
+                                = ConexaoBd.getConexao().prepareStatement(
+                        obterSentencaLocalizarPorId()))
+        {
             // Substitui respectiva id na sentença SQL
             preparedStatement.setLong(1, (Long) id);
 
             // Recupera os dados da consulta
-            ResultSet resultSet
-                    = preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             // Movimenta para o primeiro dado recuperado
-            if (resultSet.next()) {
-
+            if (resultSet.next())
+            {
                 // Extrai o objeto representado pelo registro recuperado
                 return extrairObjeto(resultSet);
             }
+        }
 
-        } catch (Exception ex) {
+        catch (Exception ex)
+        {
             System.out.println(">> " + ex);
         }
 
@@ -123,25 +134,27 @@ public abstract class Dao<E, K>
         return null;
     }
 
-    public List<E> localizarTodos() {
-
+    public List<E> localizarTodos()
+    {
         ArrayList<E> resposta = new ArrayList<>();
 
         try ( PreparedStatement preparedStatement
-                = ConexaoBd.getConexao().prepareStatement(obterSentencaLocalizarTodos())) {
-
+                                = ConexaoBd.getConexao().prepareStatement(
+                        obterSentencaLocalizarTodos()))
+        {
             // Recupera os dados da consulta
-            ResultSet resultSet
-                    = preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             // Iterar sobre todos os registros
-            while (resultSet.next()) {
-
+            while (resultSet.next())
+            {
                 // Extrai e adionar "próximo" objeto
                 resposta.add(extrairObjeto(resultSet));
             }
+        }
 
-        } catch (Exception ex) {
+        catch (Exception ex)
+        {
             System.out.println(">> " + ex);
         }
 

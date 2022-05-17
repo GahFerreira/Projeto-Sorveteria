@@ -13,9 +13,10 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe PedidoFisico no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.0, 16/05/2022
+ * @version 1.1, 17/05/2022
  */
-public class PedidoFisicoDao extends Dao<PedidoFisico, Long>
+public class PedidoFisicoDao
+        extends Dao<PedidoFisico, Long>
 {
     @Override
     public String obterSentencaInsert()
@@ -32,13 +33,13 @@ public class PedidoFisicoDao extends Dao<PedidoFisico, Long>
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select data, cliente, formaPagamento, gorjeta from pessoafisica where id = ?;";
+        return "select id, data, cliente, formaPagamento, gorjeta from pessoafisica where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select data, cliente, formaPagamento, gorjeta from pessoafisica where excluido = false;";
+        return "select id, data, cliente, formaPagamento, gorjeta from pessoafisica where excluido = false;";
     }
 
     @Override
@@ -50,13 +51,13 @@ public class PedidoFisicoDao extends Dao<PedidoFisico, Long>
             pstmt.setString(2, e.getCliente());
             pstmt.setString(3, e.getFormaPagamento());
             pstmt.setDouble(4, e.getGorjeta());
-            
+
             if (e.getId() != null && e.getId() != 0)
             {
                 pstmt.setLong(5, e.getId());
             }
         }
-        
+
         catch (Exception ex)
         {
             System.out.println("Falha na Montagem da Declaração SQL de PedidoFisico: " + ex);
@@ -67,7 +68,7 @@ public class PedidoFisicoDao extends Dao<PedidoFisico, Long>
     public PedidoFisico extrairObjeto(ResultSet resultSet)
     {
         PedidoFisico pedidoFisico = null;
-        
+
         try
         {
             pedidoFisico = new PedidoFisico(resultSet.getLong("id"),
@@ -77,12 +78,12 @@ public class PedidoFisicoDao extends Dao<PedidoFisico, Long>
                                             null,
                                             resultSet.getDouble("gorjeta"));
         }
-        
-        catch(Exception ex)
+
+        catch (Exception ex)
         {
             System.out.println("Erro na extração de PedidoFisico do Banco de Dados: " + ex);
         }
-        
+
         return pedidoFisico;
     }
 }

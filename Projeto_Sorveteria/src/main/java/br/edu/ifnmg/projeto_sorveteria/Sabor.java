@@ -4,28 +4,29 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria;
 
 /**
  * Entidade que representa um sabor.
- * 
- * Pode representar tanto o sabor de bolas de sorvete, 
+ *
+ * Pode representar tanto o sabor de bolas de sorvete,
  * usadas em sorvetes e milkshakes, ou o sabor de um picolé.
  *
  * @author GahFerreira
  * @version 1.1, 11/05/2022
  */
-public class Sabor extends Entidade
+public class Sabor
+        extends Entidade
 {
     String nome;
     Categoria categoria;
     Double preco;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
-    
-    public Sabor() {}
-    
+    public Sabor()
+    {
+    }
+
     public Sabor(String nome, Categoria categoria, Double preco)
     {
         this.nome = nome;
@@ -40,11 +41,9 @@ public class Sabor extends Entidade
         this.categoria = categoria;
         this.preco = preco;
     }
-    
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
-    
     public String getNome()
     {
         return nome;
@@ -74,16 +73,13 @@ public class Sabor extends Entidade
     {
         this.preco = preco;
     }
-    
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="ToString">
-    
     @Override
     public String toString()
     {
         return "Sabor{" + "nome=" + nome + ", categoria=" + categoria + ", preco=" + preco + '}';
     }
-    
 //</editor-fold>
 }

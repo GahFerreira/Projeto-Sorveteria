@@ -13,9 +13,10 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Recipiente no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.0, 16/05/2022
+ * @version 1.1, 17/05/2022
  */
-public class RecipienteDao extends Dao<Recipiente, Long>
+public class RecipienteDao
+        extends Dao<Recipiente, Long>
 {
     @Override
     public String obterSentencaInsert()
@@ -32,13 +33,13 @@ public class RecipienteDao extends Dao<Recipiente, Long>
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select (nome, preco) from recipiente where id = ?;";
+        return "select id, nome, preco from recipiente where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select (nome, preco) from recipiente where excluido = false;";
+        return "select id, nome, preco from recipiente where excluido = false;";
     }
 
     @Override
@@ -48,13 +49,13 @@ public class RecipienteDao extends Dao<Recipiente, Long>
         {
             pstmt.setString(1, e.getNome());
             pstmt.setDouble(2, e.getPreco());
-            
+
             if (e.getId() != null && e.getId() != 0)
             {
                 pstmt.setLong(3, e.getId());
             }
         }
-        
+
         catch (Exception ex)
         {
             System.out.println("Falha na Montagem da Declaração SQL de Recipiente: " + ex);
@@ -65,19 +66,19 @@ public class RecipienteDao extends Dao<Recipiente, Long>
     public Recipiente extrairObjeto(ResultSet resultSet)
     {
         Recipiente recipiente = null;
-        
+
         try
         {
             recipiente = new Recipiente(resultSet.getLong("id"),
                                         resultSet.getString("nome"),
                                         resultSet.getDouble("preco"));
         }
-        
-        catch(Exception ex)
+
+        catch (Exception ex)
         {
             System.out.println("Erro na extração de Quantidade do Banco de Dados: " + ex);
         }
-        
+
         return recipiente;
     }
 }
