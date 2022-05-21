@@ -1,0 +1,211 @@
+CREATE TABLE Sorvete(
+
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    recipienteId BIGINT FOREIGN KEY REFERENCES Recipiente(id),
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE Recipiente(
+
+  	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    preco DOUBLE,
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE SorveteAdicional(
+
+  	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    sorveteId BIGINT FOREIGN KEY REFERENCES Sorvete(id),
+    adicionalId BIGINT FOREIGN KEY REFERENCES Adicional(id),
+    quantidade BIGINT,
+    UNIQUE (sorveteId,adicionalId),
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE Adicional(
+
+	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(100),
+	preco DOUBLE,
+  excluido BOOLEAN
+
+);
+
+/*relação sorvete com bolas de diferentes sabores*/
+CREATE TABLE SorveteBolas(
+
+  	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    sorveteId BIGINT FOREIGN KEY REFERENCES Sorvete(id),
+    bolasId BIGINT FOREIGN KEY REFERENCES Sabor(id),
+    quantidade BIGINT,
+	  UNIQUE (sorveteId,bolasId),
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE Sabor(
+
+	  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    categoria ENUM('PICOLÉ','PRODUTO_COMPOSTO'),
+	  preco DOUBLE,
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE Milkshake(
+
+  	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    tamanhoId BIGINT FOREIGN KEY REFERENCES Tamanho(id),
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE Tamanho(
+
+	  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  	mililitros BIGINT,
+    preco DOUBLE,
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE MilkshakeBolas(
+
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    milkshakeId BIGINT FOREIGN KEY REFERENCES Milkshake(id),
+    bolasId BIGINT FOREIGN KEY REFERENCES Sabor(id),
+    quantidade BIGINT,
+	  UNIQUE (milkshakeId,bolasId),
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE Picole(
+
+  	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    tipo ENUM('NATURAL','ESPECIAL'),
+    saborId BIGINT FOREIGN KEY REFERENCES Sabor(id),
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE Pedido(
+
+	  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  	data_ DATETIME,
+    cliente VARCHAR(100),
+    formaDePagamento VARCHAR(100),
+    precoTotal DOUBLE,
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE PedidoDelivery(
+
+	  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    pedidoId BIGINT FOREIGN KEY REFERENCES Pedido(id),
+    endereco VARCHAR(100),
+	  frete DOUBLE,
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE PedidoFisico(
+	 
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    pedidoId BIGINT FOREIGN KEY REFERENCES Pedido(id),
+    gorjeta DOUBLE
+
+);
+
+CREATE TABLE PedidoSorvete(
+
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    pedidoId BIGINT FOREIGN KEY REFERENCES Pedido(id),
+    sorveteId BIGINT FOREIGN KEY REFERENCES Sorvete(id),
+    quantidade BIGINT,
+	  UNIQUE (pedidoId,sorveteId),
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE PedidoMilkshake(
+
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    pedidoId BIGINT FOREIGN KEY REFERENCES Pedido(id),
+    milkshakeId BIGINT FOREIGN KEY REFERENCES Milkshake(id),
+    quantidade BIGINT,
+	  UNIQUE (pedidoId,milkshakeId),
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE PedidoPicole(
+
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    pedidoId BIGINT FOREIGN KEY REFERENCES Pedido(id),
+    picoleId BIGINT FOREIGN KEY REFERENCES Picole(id),
+    quantidade BIGINT,
+	  UNIQUE (pedidoId,picoleId),
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE Garcom(
+
+	  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+	  nome VARCHAR(100),
+    nascimento DATE,
+    cpf VARCHAR(100),
+	  telefone BIGINT,
+    salario DOUBLE,
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE Entregador(
+
+	  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+	  nome VARCHAR(100),
+    nascimento DATE,
+    cpf VARCHAR(100),
+	  telefone BIGINT,
+    salario DOUBLE,
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE Gerente(
+
+  	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+	  nome VARCHAR(100),
+    nascimento DATE,
+    cpf VARCHAR(100),
+	  telefone BIGINT,
+    salario DOUBLE,
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE GarcomPedido(
+
+	  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    garcomId BIGINT FOREIGN KEY REFERENCES Garcom(id),
+    pedidoId BIGINT FOREIGN KEY REFERENCES Pedido(id),
+    excluido BOOLEAN
+
+);
+
+CREATE TABLE EntregadorPedido(
+
+	  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    entregadorId BIGINT FOREIGN KEY REFERENCES Entregador(id),
+    pedidoId BIGINT FOREIGN KEY REFERENCES Pedido(id),
+    excluido BOOLEAN
+
+);
