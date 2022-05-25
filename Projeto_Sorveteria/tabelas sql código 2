@@ -4,7 +4,7 @@ CREATE TABLE Sorvete(
     recipienteId BIGINT FOREIGN KEY REFERENCES Recipiente(id),
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE Recipiente(
 
@@ -13,7 +13,7 @@ CREATE TABLE Recipiente(
     preco DOUBLE,
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE SorveteAdicional(
 
@@ -24,7 +24,7 @@ CREATE TABLE SorveteAdicional(
     UNIQUE (sorveteId,adicionalId),
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE Adicional(
 
@@ -33,7 +33,7 @@ CREATE TABLE Adicional(
 	preco DOUBLE,
   excluido BOOLEAN
 
-);
+)engine=innodb;
 
 /*relação sorvete com bolas de diferentes sabores*/
 CREATE TABLE SorveteBolas(
@@ -45,7 +45,7 @@ CREATE TABLE SorveteBolas(
 	  UNIQUE (sorveteId,bolasId),
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE Sabor(
 
@@ -55,7 +55,7 @@ CREATE TABLE Sabor(
 	  preco DOUBLE,
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE Milkshake(
 
@@ -63,7 +63,7 @@ CREATE TABLE Milkshake(
     tamanhoId BIGINT FOREIGN KEY REFERENCES Tamanho(id),
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE Tamanho(
 
@@ -72,7 +72,7 @@ CREATE TABLE Tamanho(
     preco DOUBLE,
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE MilkshakeBolas(
 
@@ -83,7 +83,7 @@ CREATE TABLE MilkshakeBolas(
 	  UNIQUE (milkshakeId,bolasId),
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE Picole(
 
@@ -92,7 +92,7 @@ CREATE TABLE Picole(
     saborId BIGINT FOREIGN KEY REFERENCES Sabor(id),
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE Pedido(
 
@@ -103,7 +103,7 @@ CREATE TABLE Pedido(
     precoTotal DOUBLE,
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE PedidoDelivery(
 
@@ -113,7 +113,7 @@ CREATE TABLE PedidoDelivery(
 	  frete DOUBLE,
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE PedidoFisico(
 	 
@@ -121,7 +121,7 @@ CREATE TABLE PedidoFisico(
     pedidoId BIGINT FOREIGN KEY REFERENCES Pedido(id),
     gorjeta DOUBLE
 
-);
+)engine=innodb;
 
 CREATE TABLE PedidoSorvete(
 
@@ -132,7 +132,7 @@ CREATE TABLE PedidoSorvete(
 	  UNIQUE (pedidoId,sorveteId),
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE PedidoMilkshake(
 
@@ -143,7 +143,7 @@ CREATE TABLE PedidoMilkshake(
 	  UNIQUE (pedidoId,milkshakeId),
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE PedidoPicole(
 
@@ -154,7 +154,7 @@ CREATE TABLE PedidoPicole(
 	  UNIQUE (pedidoId,picoleId),
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE Garcom(
 
@@ -166,7 +166,7 @@ CREATE TABLE Garcom(
     salario DOUBLE,
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE Entregador(
 
@@ -178,7 +178,7 @@ CREATE TABLE Entregador(
     salario DOUBLE,
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE Gerente(
 
@@ -190,7 +190,7 @@ CREATE TABLE Gerente(
     salario DOUBLE,
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE GarcomPedido(
 
@@ -199,7 +199,7 @@ CREATE TABLE GarcomPedido(
     pedidoId BIGINT FOREIGN KEY REFERENCES Pedido(id),
     excluido BOOLEAN
 
-);
+)engine=innodb;
 
 CREATE TABLE EntregadorPedido(
 
@@ -208,4 +208,4 @@ CREATE TABLE EntregadorPedido(
     pedidoId BIGINT FOREIGN KEY REFERENCES Pedido(id),
     excluido BOOLEAN
 
-);
+)engine=innodb;
