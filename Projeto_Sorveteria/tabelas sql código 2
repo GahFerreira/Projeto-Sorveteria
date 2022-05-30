@@ -28,10 +28,10 @@ CREATE TABLE SorveteAdicional(
 
 CREATE TABLE Adicional(
 
-  id BIGINT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(100),
-  preco DOUBLE,
-  excluido BOOLEAN
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    preco DOUBLE,
+    excluido BOOLEAN
 
 )engine=innodb;
 
