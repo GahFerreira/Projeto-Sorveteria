@@ -42,6 +42,12 @@ public class PedidoFisicoDao
     {
         return "select id, data, cliente, formaPagamento, gorjeta from pessoafisica where excluido = false;";
     }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update pedidofisico set excluido = true where id = ?;";
+    }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, PedidoFisico e)

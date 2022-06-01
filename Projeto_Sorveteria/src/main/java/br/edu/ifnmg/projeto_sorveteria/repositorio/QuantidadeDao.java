@@ -42,6 +42,12 @@ public class QuantidadeDao
     {
         return "select id, saborId, produtoCompostoId, quantidadeBolas from quantidade where excluido = false;";
     }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update quantidade set excluido = true where id = ?;";
+    }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Quantidade e)

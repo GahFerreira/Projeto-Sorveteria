@@ -42,6 +42,12 @@ public class TamanhoDao
     {
         return "select id, mililitros, preco from ponei where excluido = false;";
     }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update tamanho set excluido = true where id = ?;";
+    }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Tamanho e)

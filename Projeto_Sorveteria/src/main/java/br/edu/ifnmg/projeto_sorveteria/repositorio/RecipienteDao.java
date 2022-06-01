@@ -42,6 +42,12 @@ public class RecipienteDao
     {
         return "select id, nome, preco from recipiente where excluido = false;";
     }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update recipiente set excluido = true where id = ?;";
+    }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Recipiente e)

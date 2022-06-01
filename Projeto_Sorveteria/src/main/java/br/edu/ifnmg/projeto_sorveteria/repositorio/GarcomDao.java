@@ -44,6 +44,12 @@ public class GarcomDao
     {
         return "select id, nome, nascimento, cpf, telefone from garcom where excluido = false;";
     }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update garcom set excluido = true where id = ?;";
+    }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Garcom e)

@@ -4,8 +4,9 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-package br.edu.ifnmg.projeto_sorveteria.entidade;
+package br.edu.ifnmg.projeto_sorveteria.repositorio;
 
+import br.edu.ifnmg.projeto_sorveteria.entidade.PedidoDelivery;
 import br.edu.ifnmg.projeto_sorveteria.repositorio.Dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,13 +23,13 @@ public class PedidoDeliveryDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into pedidofisico (data, cliente, formaPagamento, endereco, frete) values (?, ?, ?, ?, ?);";
+        return "insert into pedidodelivery (data, cliente, formaPagamento, endereco, frete) values (?, ?, ?, ?, ?);";
     }
 
     @Override
     public String obterSentencaUpdate()
     {
-        return "update pedidofisico set data = ?, cliente = ?, formaPagamento = ?, endereco = ?, frete = ? where id = ?;";
+        return "update pedidodelivery set data = ?, cliente = ?, formaPagamento = ?, endereco = ?, frete = ? where id = ?;";
     }
 
     @Override
@@ -41,6 +42,12 @@ public class PedidoDeliveryDao
     public String obterSentencaLocalizarTodos()
     {
         return "select id, data, cliente, formaPagamento, endereco, frete from pessoafisica where excluido = false;";
+    }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update pedidodelivery set excluido = true where id = ?;";
     }
 
     @Override

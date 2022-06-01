@@ -42,6 +42,12 @@ public class SorveteDao
     {
         return "select id, recipienteId from sorvete where excluido = false;";
     }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update sorvete set excluido = true where id = ?;";
+    }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Sorvete e)

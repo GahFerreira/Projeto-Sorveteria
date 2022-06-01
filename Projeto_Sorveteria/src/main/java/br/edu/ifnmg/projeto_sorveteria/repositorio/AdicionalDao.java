@@ -42,6 +42,12 @@ public class AdicionalDao
     {
         return "select id, nome, preco from adicional where excluido = false;";
     }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update adicional set excluido = true where id = ?;";
+    }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Adicional e)

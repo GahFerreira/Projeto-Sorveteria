@@ -42,6 +42,12 @@ public class GerenteDao
     {
         return "select id, nome, nascimento, cpf, telefone from gerente where excluido = false;";
     }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update gerente set excluido = true where id = ?;";
+    }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Gerente e)

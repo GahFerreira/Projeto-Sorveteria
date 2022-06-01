@@ -42,6 +42,12 @@ public class MilkshakeDao
     {
         return "select id, idTamanho from milkshake where excluido = false;";
     }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update milkshake set excluido = true where id = ?;";
+    }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Milkshake e)

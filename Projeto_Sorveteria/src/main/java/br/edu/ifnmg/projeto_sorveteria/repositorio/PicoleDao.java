@@ -43,6 +43,12 @@ public class PicoleDao
     {
         return "select id, tipo, idSabor from picole where excluido = false;";
     }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update picole set excluido = true where id = ?;";
+    }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Picole e)

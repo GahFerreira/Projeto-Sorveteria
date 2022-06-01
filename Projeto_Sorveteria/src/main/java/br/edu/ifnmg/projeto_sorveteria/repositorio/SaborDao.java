@@ -43,6 +43,12 @@ public class SaborDao
     {
         return "select id, nome, categoria, preco from sabor where excluido = false;";
     }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update sabor set excluido = true where id = ?;";
+    }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Sabor e)

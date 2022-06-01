@@ -42,6 +42,12 @@ public class EntregadorDao
     {
         return "select id, nome, nascimento, cpf, telefone from entregador where excluido = false;";
     }
+    
+    @Override
+    public String obterDeclaracaoDelete()
+    {
+        return "update entregador set excluido = true where id = ?;";
+    }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Entregador e)
