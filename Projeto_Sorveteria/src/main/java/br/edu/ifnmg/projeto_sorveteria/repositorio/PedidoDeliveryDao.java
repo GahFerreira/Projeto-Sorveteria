@@ -23,7 +23,7 @@ public class PedidoDeliveryDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into pedidodelivery (data, cliente, formaPagamento, endereco, frete) values (?, ?, ?, ?, ?);";
+        return "insert into pedidodelivery (data, cliente, formaPagamento, endereco, frete, excluido) values (?, ?, ?, ?, ?, false);";
     }
 
     @Override

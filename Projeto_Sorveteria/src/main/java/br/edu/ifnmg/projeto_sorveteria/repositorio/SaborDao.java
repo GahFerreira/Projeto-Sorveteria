@@ -23,7 +23,7 @@ public class SaborDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into sabor (nome, categoria, preco) values (?, ?, ?);";
+        return "insert into sabor (nome, categoria, preco, excluido) values (?, ?, ?, false);";
     }
 
     @Override

@@ -44,7 +44,7 @@ public class ConexaoBd
     static
     {
         // Servidor Local
-        URL = "jdbc:mysql://127.0.0.1:3306/sistema" +
+        URL = "jdbc:mysql://127.0.0.1:3306/projeto_sorvete" +
               "?useUnicode=true" +
               "&useJDBCCompliantTimezoneShift=true" +
               "&serverTimezone=UTC" +

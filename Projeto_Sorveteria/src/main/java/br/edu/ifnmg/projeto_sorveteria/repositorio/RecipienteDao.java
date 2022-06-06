@@ -22,7 +22,7 @@ public class RecipienteDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into recipiente (nome, preco) values (?, ?);";
+        return "insert into recipiente (nome, preco, excluido) values (?, ?, false);";
     }
 
     @Override

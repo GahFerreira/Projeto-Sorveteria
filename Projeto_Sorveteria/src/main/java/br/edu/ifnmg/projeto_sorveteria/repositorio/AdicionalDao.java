@@ -22,7 +22,7 @@ public class AdicionalDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into adicional (nome, preco) values (?, ?);";
+        return "insert into adicional (nome, preco, excluido) values (?, ?, false);";
     }
 
     @Override

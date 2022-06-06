@@ -24,7 +24,7 @@ public class GarcomDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into garcom (nome, nascimento, cpf, telefone) values (?, ?, ?, ?);";
+        return "insert into garcom (nome, nascimento, cpf, telefone, excluido) values (?, ?, ?, ?, false);";
     }
 
     @Override

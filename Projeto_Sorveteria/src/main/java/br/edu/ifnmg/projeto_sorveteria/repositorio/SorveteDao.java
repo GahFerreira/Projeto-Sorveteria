@@ -22,7 +22,7 @@ public class SorveteDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into sorvete (recipienteId) values (?);";
+        return "insert into sorvete (recipienteId, excluido) values (?, false);";
     }
 
     @Override
