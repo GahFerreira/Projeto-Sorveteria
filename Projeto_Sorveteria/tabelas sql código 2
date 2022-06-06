@@ -15,13 +15,13 @@ CREATE TABLE Recipiente(
 
 )engine=innodb;
 
-CREATE TABLE SorveteAdicional(
+CREATE TABLE Sorvete_adicional(
 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     sorvete_id BIGINT FOREIGN KEY REFERENCES Sorvete(id),
     adicional_id BIGINT FOREIGN KEY REFERENCES Adicional(id),
     quantidade BIGINT,
-    UNIQUE (sorveteId,adicionalId),
+    UNIQUE (sorvete_id,adicional_id),
     excluido BOOLEAN
 
 )engine=innodb;
@@ -36,13 +36,13 @@ CREATE TABLE Adicional(
 )engine=innodb;
 
 /*relação sorvete com bolas de diferentes sabores*/
-CREATE TABLE SorveteBolas(
+CREATE TABLE Sorvete_bolas(
 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     sorvete_id BIGINT FOREIGN KEY REFERENCES Sorvete(id),
-    bolasId BIGINT FOREIGN KEY REFERENCES Sabor(id),
+    bolas_id BIGINT FOREIGN KEY REFERENCES Sabor(id),
     quantidade BIGINT,
-    UNIQUE (sorveteId,bolasId),
+    UNIQUE (sorvete_id,bolas_id),
     excluido BOOLEAN
 
 )engine=innodb;
@@ -74,13 +74,13 @@ CREATE TABLE Tamanho(
 
 )engine=innodb;
 
-CREATE TABLE MilkshakeBolas(
+CREATE TABLE Milkshake_bolas(
 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     milkshake_id BIGINT FOREIGN KEY REFERENCES Milkshake(id),
     bolas_id BIGINT FOREIGN KEY REFERENCES Sabor(id),
     quantidade BIGINT,
-    UNIQUE (milkshakeId,bolasId),
+    UNIQUE (milkshake_id,bolas_id),
     excluido BOOLEAN
 
 )engine=innodb;
@@ -99,13 +99,13 @@ CREATE TABLE Pedido(
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     data_ DATETIME,
     cliente VARCHAR(100),
-    formaDePagamento VARCHAR(100),
-    precoTotal DOUBLE,
+    forma_de_pagamento VARCHAR(100),
+    preco_total DOUBLE,
     excluido BOOLEAN
 
 )engine=innodb;
 
-CREATE TABLE PedidoDelivery(
+CREATE TABLE Pedido_delivery(
 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     pedido_id BIGINT FOREIGN KEY REFERENCES Pedido(id),
@@ -115,7 +115,7 @@ CREATE TABLE PedidoDelivery(
 
 )engine=innodb;
 
-CREATE TABLE PedidoFisico(
+CREATE TABLE Pedido_fisico(
 	 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     pedido_id BIGINT FOREIGN KEY REFERENCES Pedido(id),
@@ -123,35 +123,35 @@ CREATE TABLE PedidoFisico(
 
 )engine=innodb;
 
-CREATE TABLE PedidoSorvete(
+CREATE TABLE Pedido_sorvete(
 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     pedido_id BIGINT FOREIGN KEY REFERENCES Pedido(id),
     sorvete_id BIGINT FOREIGN KEY REFERENCES Sorvete(id),
     quantidade BIGINT,
-    UNIQUE (pedidoId,sorveteId),
+    UNIQUE (pedido_id,sorvete_id),
     excluido BOOLEAN
 
 )engine=innodb;
 
-CREATE TABLE PedidoMilkshake(
+CREATE TABLE Pedido_milkshake(
 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     pedido_id BIGINT FOREIGN KEY REFERENCES Pedido(id),
     milkshake_id BIGINT FOREIGN KEY REFERENCES Milkshake(id),
     quantidade BIGINT,
-    UNIQUE (pedidoId,milkshakeId),
+    UNIQUE (pedido_id,milkshake_id),
     excluido BOOLEAN
 
 )engine=innodb;
 
-CREATE TABLE PedidoPicole(
+CREATE TABLE Pedido_picole(
 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     pedido_id BIGINT FOREIGN KEY REFERENCES Pedido(id),
     picole_id BIGINT FOREIGN KEY REFERENCES Picole(id),
     quantidade BIGINT,
-    UNIQUE (pedidoId,picoleId),
+    UNIQUE (pedido_id,picole_id),
     excluido BOOLEAN
 
 )engine=innodb;
@@ -192,7 +192,7 @@ CREATE TABLE Gerente(
 
 )engine=innodb;
 
-CREATE TABLE GarcomPedido(
+CREATE TABLE Garcom_pedido(
 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     garcom_id BIGINT FOREIGN KEY REFERENCES Garcom(id),
@@ -201,7 +201,7 @@ CREATE TABLE GarcomPedido(
 
 )engine=innodb;
 
-CREATE TABLE EntregadorPedido(
+CREATE TABLE Entregador_pedido(
 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     entregador_id BIGINT FOREIGN KEY REFERENCES Entregador(id),
