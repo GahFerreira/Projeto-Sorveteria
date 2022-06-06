@@ -26,17 +26,14 @@ public abstract class ProdutoComposto
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public ProdutoComposto()
     {
+        this(null);
     }
 
-    public ProdutoComposto(ArrayList<Quantidade> quantidadeBolasCadaSabor)
-    {
-        this.quantidadeBolasCadaSabor = quantidadeBolasCadaSabor;
-    }
-
-    public ProdutoComposto(Long id, ArrayList<Quantidade> quantidadeBolasCadaSabor)
+    public ProdutoComposto(Long id)
     {
         super(id);
-        this.quantidadeBolasCadaSabor = quantidadeBolasCadaSabor;
+        
+        this.quantidadeBolasCadaSabor = new ArrayList<>();
     }
 //</editor-fold>
 

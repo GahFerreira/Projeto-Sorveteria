@@ -22,7 +22,7 @@ public class PedidoFisicoDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into pedidofisico (data, cliente, formaPagamento, gorjeta) values (?, ?, ?, ?);";
+        return "insert into pedidofisico (data, cliente, formaPagamento, gorjeta, excluido) values (?, ?, ?, ?, false);";
     }
 
     @Override
@@ -82,7 +82,6 @@ public class PedidoFisicoDao
                                             resultSet.getTimestamp("data").toLocalDateTime(),
                                             resultSet.getString("cliente"),
                                             resultSet.getString("formaPagamento"),
-                                            null,
                                             resultSet.getDouble("gorjeta"));
         }
 

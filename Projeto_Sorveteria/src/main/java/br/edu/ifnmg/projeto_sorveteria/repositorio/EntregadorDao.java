@@ -22,7 +22,7 @@ public class EntregadorDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into entregador (nome, nascimento, cpf, telefone) values (?, ?, ?, ?);";
+        return "insert into entregador (nome, nascimento, cpf, telefone, excluido) values (?, ?, ?, ?, false);";
     }
 
     @Override
@@ -81,8 +81,7 @@ public class EntregadorDao
                                         resultSet.getString("nome"),
                                         resultSet.getDate("nascimento").toLocalDate(),
                                         resultSet.getString("cpf"),
-                                        resultSet.getLong("telefone"),
-                                        null);
+                                        resultSet.getLong("telefone"));
         }
 
         catch (Exception ex)

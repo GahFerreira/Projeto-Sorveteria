@@ -22,7 +22,7 @@ public class TamanhoDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into tamanho (mililitros, preco) values (?, ?);";
+        return "insert into tamanho (mililitros, preco, excluido) values (?, ?, false);";
     }
 
     @Override

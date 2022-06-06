@@ -24,7 +24,7 @@ public class GarcomDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into garcom (nome, nascimento, cpf, telefone) values (?, ?, ?, ?);";
+        return "insert into garcom (nome, nascimento, cpf, telefone, excluido) values (?, ?, ?, ?, false);";
     }
 
     @Override
@@ -84,8 +84,7 @@ public class GarcomDao
                                 resultSet.getString("nome"),
                                 resultSet.getDate("nascimento").toLocalDate(),
                                 resultSet.getString("cpf"),
-                                resultSet.getLong("telefone"),
-                                null);
+                                resultSet.getLong("telefone"));
         }
 
         catch (Exception ex)

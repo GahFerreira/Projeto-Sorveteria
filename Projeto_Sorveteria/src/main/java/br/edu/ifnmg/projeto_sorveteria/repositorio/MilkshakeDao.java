@@ -22,25 +22,25 @@ public class MilkshakeDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into milkshake (idTamanho) values (?);";
+        return "insert into milkshake (tamanho_id, excluido) values (?, false);";
     }
 
     @Override
     public String obterSentencaUpdate()
     {
-        return "update milkshake set idTamanho = ? where id = ?;";
+        return "update milkshake set tamanho_id = ? where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select id, idTamanho from milkshake where id = ?;";
+        return "select id, tamanho_id from milkshake where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select id, idTamanho from milkshake where excluido = false;";
+        return "select id, tamanho_id from milkshake where excluido = false;";
     }
     
     @Override
@@ -76,7 +76,6 @@ public class MilkshakeDao
         try
         {
             milkshake = new Milkshake(resultSet.getLong("id"),
-                                      null,
                                       null);
         }
 

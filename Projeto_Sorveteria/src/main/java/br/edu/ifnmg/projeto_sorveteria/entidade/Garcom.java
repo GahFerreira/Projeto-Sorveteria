@@ -23,18 +23,19 @@ public class Garcom
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Garcom()
     {
+        this(null, null, null, null, null);
     }
 
-    public Garcom(String nome, LocalDate nascimento, String cpf, Long telefone, ArrayList<PedidoFisico> pedidos)
+    public Garcom(String nome, LocalDate nascimento, String cpf, Long telefone)
     {
-        super(nome, nascimento, cpf, telefone);
-        this.pedidos = pedidos;
+        this(null, nome, nascimento, cpf, telefone);
     }
 
-    public Garcom(Long id, String nome, LocalDate nascimento, String cpf, Long telefone, ArrayList<PedidoFisico> pedidos)
+    public Garcom(Long id, String nome, LocalDate nascimento, String cpf, Long telefone)
     {
         super(id, nome, nascimento, cpf, telefone);
-        this.pedidos = pedidos;
+        
+        this.pedidos = new ArrayList<>();
     }
 //</editor-fold>
 

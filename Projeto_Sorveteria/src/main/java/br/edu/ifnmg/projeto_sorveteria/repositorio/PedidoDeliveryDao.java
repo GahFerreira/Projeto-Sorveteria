@@ -23,7 +23,7 @@ public class PedidoDeliveryDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into pedidodelivery (data, cliente, formaPagamento, endereco, frete) values (?, ?, ?, ?, ?);";
+        return "insert into pedidodelivery (data, cliente, formaPagamento, endereco, frete, excluido) values (?, ?, ?, ?, ?, false);";
     }
 
     @Override
@@ -84,7 +84,6 @@ public class PedidoDeliveryDao
                                                 resultSet.getTimestamp("data").toLocalDateTime(),
                                                 resultSet.getString("cliente"),
                                                 resultSet.getString("formaPagamento"),
-                                                null,
                                                 resultSet.getString("endereco"),
                                                 resultSet.getDouble("frete"));
         }

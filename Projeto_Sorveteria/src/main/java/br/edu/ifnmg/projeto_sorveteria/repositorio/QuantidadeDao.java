@@ -18,29 +18,29 @@ import java.sql.ResultSet;
  */
 public class QuantidadeDao
         extends Dao<Quantidade, Long>
-{
+{   
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into quantidade (saborId, produtoCompostoId, quantidadeBolas) values (?, ?, ?);";
+        return "insert into quantidade (sabor_id, produtoComposto_id, quantidadeBolas, excluido) values (?, ?, ?, false);";
     }
 
     @Override
     public String obterSentencaUpdate()
     {
-        return "update quantidade set saborId = ?, produtoCompostoId = ?, quantidadeBolas = ? where id = ?;";
+        return "update quantidade set sabor_id = ?, produtoComposto_id = ?, quantidadeBolas = ? where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select id, saborId, produtoCompostoId, quantidadeBolas from quantidade where id = ?;";
+        return "select id, sabor_id, produtoComposto_id, quantidadeBolas from quantidade where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select id, saborId, produtoCompostoId, quantidadeBolas from quantidade where excluido = false;";
+        return "select id, sabor_id, produtoComposto_id, quantidadeBolas from quantidade where excluido = false;";
     }
     
     @Override

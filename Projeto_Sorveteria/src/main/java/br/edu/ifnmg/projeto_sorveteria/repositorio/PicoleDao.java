@@ -23,25 +23,25 @@ public class PicoleDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into picole (tipo, idSabor) values (?, ?);";
+        return "insert into picole (tipo, sabor_id, excluido) values (?, ?, false);";
     }
 
     @Override
     public String obterSentencaUpdate()
     {
-        return "update picole set tipo = ?, idSabor = ? where id = ?;";
+        return "update picole set tipo = ?, sabor_id = ? where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select id, tipo, idSabor from picole where id = ?;";
+        return "select id, tipo, sabor_id from picole where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select id, tipo, idSabor from picole where excluido = false;";
+        return "select id, tipo, sabor_id from picole where excluido = false;";
     }
     
     @Override
@@ -54,7 +54,7 @@ public class PicoleDao
     public void montarDeclaracao(PreparedStatement pstmt, Picole e)
     {
         try
-        {
+        {            
             pstmt.setString(1, e.getTipo().name());
             pstmt.setLong(2, e.getSabor().getId());
 
