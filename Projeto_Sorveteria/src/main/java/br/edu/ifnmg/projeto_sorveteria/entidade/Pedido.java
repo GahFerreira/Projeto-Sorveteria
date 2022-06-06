@@ -28,23 +28,22 @@ public abstract class Pedido
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Pedido()
     {
+        this(null, null, null, null);
     }
 
-    public Pedido(LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos)
+    public Pedido(LocalDateTime data, String cliente, String formaPagamento)
     {
-        this.data = data;
-        this.cliente = cliente;
-        this.formaPagamento = formaPagamento;
-        this.produtos = produtos;
+        this(null, data, cliente, formaPagamento);
     }
 
-    public Pedido(Long id, LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos)
+    public Pedido(Long id, LocalDateTime data, String cliente, String formaPagamento)
     {
         super(id);
         this.data = data;
         this.cliente = cliente;
         this.formaPagamento = formaPagamento;
-        this.produtos = produtos;
+        
+        this.produtos = new ArrayList<>();
     }
 //</editor-fold>
 

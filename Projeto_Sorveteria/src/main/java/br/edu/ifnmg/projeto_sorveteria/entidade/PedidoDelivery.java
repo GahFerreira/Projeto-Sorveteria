@@ -26,16 +26,16 @@ public class PedidoDelivery
     {
     }
 
-    public PedidoDelivery(LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos, String endereco, Double frete)
+    public PedidoDelivery(LocalDateTime data, String cliente, String formaPagamento, String endereco, Double frete)
     {
-        super(data, cliente, formaPagamento, produtos);
+        super(data, cliente, formaPagamento);
         this.endereco = endereco;
         this.frete = frete;
     }
 
-    public PedidoDelivery(Long id, LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos, String endereco, Double frete)
+    public PedidoDelivery(Long id, LocalDateTime data, String cliente, String formaPagamento, String endereco, Double frete)
     {
-        super(id, data, cliente, formaPagamento, produtos);
+        super(id, data, cliente, formaPagamento);
         this.endereco = endereco;
         this.frete = frete;
     }

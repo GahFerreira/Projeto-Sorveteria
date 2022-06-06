@@ -25,15 +25,15 @@ public class PedidoFisico
     {
     }
 
-    public PedidoFisico(LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos, Double gorjeta)
+    public PedidoFisico(LocalDateTime data, String cliente, String formaPagamento, Double gorjeta)
     {
-        super(data, cliente, formaPagamento, produtos);
+        super(data, cliente, formaPagamento);
         this.gorjeta = gorjeta;
     }
 
-    public PedidoFisico(Long id, LocalDateTime data, String cliente, String formaPagamento, ArrayList<Produto> produtos, Double gorjeta)
+    public PedidoFisico(Long id, LocalDateTime data, String cliente, String formaPagamento, Double gorjeta)
     {
-        super(id, data, cliente, formaPagamento, produtos);
+        super(id, data, cliente, formaPagamento);
         this.gorjeta = gorjeta;
     }
 //</editor-fold>

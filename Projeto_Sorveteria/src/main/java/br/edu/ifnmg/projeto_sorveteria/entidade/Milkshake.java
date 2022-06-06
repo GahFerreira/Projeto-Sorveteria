@@ -24,15 +24,14 @@ public class Milkshake
     {
     }
 
-    public Milkshake(ArrayList<Quantidade> quantidadeBolasCadaSabor, Tamanho tamanho)
+    public Milkshake(Tamanho tamanho)
     {
-        super(quantidadeBolasCadaSabor);
         this.tamanho = tamanho;
     }
 
-    public Milkshake(Long id, ArrayList<Quantidade> quantidadeBolasCadaSabor, Tamanho tamanho)
+    public Milkshake(Long id, Tamanho tamanho)
     {
-        super(id, quantidadeBolasCadaSabor);
+        super(id);
         this.tamanho = tamanho;
     }
 //</editor-fold>

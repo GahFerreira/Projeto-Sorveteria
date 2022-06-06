@@ -23,20 +23,20 @@ public class Sorvete
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Sorvete()
     {
+        this(null, null);
     }
 
-    public Sorvete(ArrayList<Quantidade> quantidadeBolasCadaSabor, Recipiente recipiente, ArrayList<Adicional> adicionais)
+    public Sorvete(Recipiente recipiente)
     {
-        super(quantidadeBolasCadaSabor);
-        this.recipiente = recipiente;
-        this.adicionais = adicionais;
+        this(null, recipiente);
     }
 
-    public Sorvete(Long id, ArrayList<Quantidade> quantidadeBolasCadaSabor, Recipiente recipiente, ArrayList<Adicional> adicionais)
+    public Sorvete(Long id, Recipiente recipiente)
     {
-        super(id, quantidadeBolasCadaSabor);
+        super(id);
         this.recipiente = recipiente;
-        this.adicionais = adicionais;
+        
+        this.adicionais = new ArrayList<>();
     }
 //</editor-fold>
 
