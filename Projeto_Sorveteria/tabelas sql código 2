@@ -1,16 +1,47 @@
-CREATE TABLE Sorvete(
-
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    recipiente_id BIGINT FOREIGN KEY REFERENCES Recipiente(id),
-    excluido BOOLEAN
-
-)engine=innodb;
-
 CREATE TABLE Recipiente(
 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100),
     preco DOUBLE,
+    excluido BOOLEAN
+
+)engine=innodb;
+
+CREATE TABLE Adicional(
+
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    preco DOUBLE,
+    excluido BOOLEAN
+
+)engine=innodb;
+
+CREATE TABLE Sabor(
+
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    categoria ENUM('PICOLE','PRODUTO_COMPOSTO'),
+    preco DOUBLE,
+    excluido BOOLEAN
+
+)engine=innodb;
+
+CREATE TABLE Tamanho(
+
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    mililitros BIGINT,
+    preco DOUBLE,
+    excluido BOOLEAN
+
+)engine=innodb;
+
+
+
+
+CREATE TABLE Sorvete(
+
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    recipiente_id BIGINT FOREIGN KEY REFERENCES Recipiente(id),
     excluido BOOLEAN
 
 )engine=innodb;
@@ -22,15 +53,6 @@ CREATE TABLE Sorvete_adicional(
     adicional_id BIGINT FOREIGN KEY REFERENCES Adicional(id),
     quantidade BIGINT,
     UNIQUE (sorvete_id,adicional_id),
-    excluido BOOLEAN
-
-)engine=innodb;
-
-CREATE TABLE Adicional(
-
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100),
-    preco DOUBLE,
     excluido BOOLEAN
 
 )engine=innodb;
@@ -47,29 +69,10 @@ CREATE TABLE Sorvete_bolas(
 
 )engine=innodb;
 
-CREATE TABLE Sabor(
-
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100),
-    categoria ENUM('PICOLÉ','PRODUTO_COMPOSTO'),
-    preco DOUBLE,
-    excluido BOOLEAN
-
-)engine=innodb;
-
 CREATE TABLE Milkshake(
 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     tamanho_id BIGINT FOREIGN KEY REFERENCES Tamanho(id),
-    excluido BOOLEAN
-
-)engine=innodb;
-
-CREATE TABLE Tamanho(
-
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    mililitros BIGINT,
-    preco DOUBLE,
     excluido BOOLEAN
 
 )engine=innodb;
