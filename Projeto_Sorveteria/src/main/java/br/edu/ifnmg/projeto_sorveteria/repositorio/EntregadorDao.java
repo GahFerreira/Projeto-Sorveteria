@@ -22,25 +22,25 @@ public class EntregadorDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into entregador (nome, nascimento, cpf, telefone, excluido) values (?, ?, ?, ?, false);";
+        return "insert into entregador (nome, nascimento, cpf, telefone, salario, excluido) values (?, ?, ?, ?, ?, false);";
     }
 
     @Override
     public String obterSentencaUpdate()
     {
-        return "update entregador set nome = ?, nascimento = ?, cpf = ?, telefone = ? where id = ?;";
+        return "update entregador set nome = ?, nascimento = ?, cpf = ?, telefone = ?, salario = ? where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select id, nome, nascimento, cpf, telefone from entregador where id = ?;";
+        return "select id, nome, nascimento, cpf, telefone, salario from entregador where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select id, nome, nascimento, cpf, telefone from entregador where excluido = false;";
+        return "select id, nome, nascimento, cpf, telefone, salario from entregador where excluido = false;";
     }
     
     @Override
@@ -58,10 +58,11 @@ public class EntregadorDao
             pstmt.setDate(2, java.sql.Date.valueOf(e.getNascimento()));
             pstmt.setString(3, e.getCpf());
             pstmt.setLong(4, e.getTelefone());
+            pstmt.setDouble(5, e.getSalario());
 
             if (e.getId() != null && e.getId() != 0)
             {
-                pstmt.setLong(5, e.getId());
+                pstmt.setLong(6, e.getId());
             }
         }
         catch (Exception ex)
@@ -81,7 +82,8 @@ public class EntregadorDao
                                         resultSet.getString("nome"),
                                         resultSet.getDate("nascimento").toLocalDate(),
                                         resultSet.getString("cpf"),
-                                        resultSet.getLong("telefone"));
+                                        resultSet.getLong("telefone"),
+                                        resultSet.getDouble("salario"));
         }
 
         catch (Exception ex)

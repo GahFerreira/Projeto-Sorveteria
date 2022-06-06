@@ -21,27 +21,30 @@ public abstract class Funcionario
     private LocalDate nascimento;
     private String cpf;
     private Long telefone;
+    private Double salario;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Funcionario()
     {
     }
 
-    public Funcionario(String nome, LocalDate nascimento, String cpf, Long telefone)
+    public Funcionario(String nome, LocalDate nascimento, String cpf, Long telefone, Double salario)
     {
         this.nome = nome;
         this.nascimento = nascimento;
         this.cpf = cpf;
         this.telefone = telefone;
+        this.salario = salario;
     }
 
-    public Funcionario(Long id, String nome, LocalDate nascimento, String cpf, Long telefone)
+    public Funcionario(Long id, String nome, LocalDate nascimento, String cpf, Long telefone, Double salario)
     {
         super(id);
         this.nome = nome;
         this.nascimento = nascimento;
         this.cpf = cpf;
         this.telefone = telefone;
+        this.salario = salario;
     }
 //</editor-fold>
 
@@ -85,15 +88,24 @@ public abstract class Funcionario
     {
         this.telefone = telefone;
     }
+
+    public Double getSalario()
+    {
+        return salario;
+    }
+
+    public void setSalario(Double salario)
+    {
+        this.salario = salario;
+    }
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="ToString">
     @Override
     public String toString()
     {
-        return "Funcionario{" + "nome=" + nome + ", nascimento=" + nascimento + ", cpf=" + cpf + ", telefone=" + telefone + '}';
+        return "Funcionario{" + "nome=" + nome + ", nascimento=" + nascimento + ", cpf=" + cpf + ", telefone=" + telefone + ", salario=" + salario + '}';
     }
 //</editor-fold>
-
     public abstract Double calcularSalario();
 }

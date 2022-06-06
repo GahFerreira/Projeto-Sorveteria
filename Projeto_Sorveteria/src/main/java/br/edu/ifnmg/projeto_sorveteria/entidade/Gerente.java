@@ -22,14 +22,14 @@ public class Gerente
     {
     }
 
-    public Gerente(String nome, LocalDate nascimento, String cpf, Long telefone)
+    public Gerente(String nome, LocalDate nascimento, String cpf, Long telefone, Double salario)
     {
-        super(nome, nascimento, cpf, telefone);
+        super(nome, nascimento, cpf, telefone, salario);
     }
 
-    public Gerente(Long id, String nome, LocalDate nascimento, String cpf, Long telefone)
+    public Gerente(Long id, String nome, LocalDate nascimento, String cpf, Long telefone, Double salario)
     {
-        super(id, nome, nascimento, cpf, telefone);
+        super(id, nome, nascimento, cpf, telefone, salario);
     }
 //</editor-fold>
 

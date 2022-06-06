@@ -25,17 +25,17 @@ public class Entregador
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Entregador()
     {
-        this(null, null, null, null, null);
+        this(null, null, null, null, null, null);
     }
 
-    public Entregador(String nome, LocalDate nascimento, String cpf, Long telefone)
+    public Entregador(String nome, LocalDate nascimento, String cpf, Long telefone, Double salario)
     {
-        this(null, nome, nascimento, cpf, telefone);
+        this(null, nome, nascimento, cpf, telefone, salario);
     }
 
-    public Entregador(Long id, String nome, LocalDate nascimento, String cpf, Long telefone)
+    public Entregador(Long id, String nome, LocalDate nascimento, String cpf, Long telefone, Double salario)
     {
-        super(id, nome, nascimento, cpf, telefone);
+        super(id, nome, nascimento, cpf, telefone, salario);
         
         this.pedidos = new ArrayList<>();
     }

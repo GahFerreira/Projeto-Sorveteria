@@ -23,25 +23,25 @@ public class PedidoDeliveryDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into pedidodelivery (data, cliente, formaPagamento, endereco, frete, excluido) values (?, ?, ?, ?, ?, false);";
+        return "insert into pedidodelivery (data_, cliente, formaPagamento, endereco, frete, excluido) values (?, ?, ?, ?, ?, false);";
     }
 
     @Override
     public String obterSentencaUpdate()
     {
-        return "update pedidodelivery set data = ?, cliente = ?, formaPagamento = ?, endereco = ?, frete = ? where id = ?;";
+        return "update pedidodelivery set data_ = ?, cliente = ?, formaPagamento = ?, endereco = ?, frete = ? where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select id, data, cliente, formaPagamento, endereco, frete from pessoafisica where id = ?;";
+        return "select id, data_, cliente, formaPagamento, endereco, frete from pessoafisica where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select id, data, cliente, formaPagamento, endereco, frete from pessoafisica where excluido = false;";
+        return "select id, data_, cliente, formaPagamento, endereco, frete from pessoafisica where excluido = false;";
     }
     
     @Override

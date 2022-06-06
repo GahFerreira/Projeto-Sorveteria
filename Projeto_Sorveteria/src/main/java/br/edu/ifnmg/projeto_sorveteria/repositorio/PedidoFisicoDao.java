@@ -22,25 +22,25 @@ public class PedidoFisicoDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into pedidofisico (data, cliente, formaPagamento, gorjeta, excluido) values (?, ?, ?, ?, false);";
+        return "insert into pedidofisico (data_, cliente, formaPagamento, gorjeta, excluido) values (?, ?, ?, ?, false);";
     }
 
     @Override
     public String obterSentencaUpdate()
     {
-        return "update pedidofisico set data = ?, cliente = ?, formaPagamento = ?, gorjeta = ? where id = ?;";
+        return "update pedidofisico set data_ = ?, cliente = ?, formaPagamento = ?, gorjeta = ? where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select id, data, cliente, formaPagamento, gorjeta from pessoafisica where id = ?;";
+        return "select id, data_, cliente, formaPagamento, gorjeta from pessoafisica where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select id, data, cliente, formaPagamento, gorjeta from pessoafisica where excluido = false;";
+        return "select id, data_, cliente, formaPagamento, gorjeta from pessoafisica where excluido = false;";
     }
     
     @Override
