@@ -18,8 +18,8 @@ import java.util.ArrayList;
 public class PedidoDelivery
         extends Pedido
 {
-    String endereco;
-    Double frete;
+    private String endereco;
+    private Double frete;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public PedidoDelivery()

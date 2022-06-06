@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class PedidoFisico
         extends Pedido
 {
-    Double gorjeta;
+    private Double gorjeta;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public PedidoFisico()

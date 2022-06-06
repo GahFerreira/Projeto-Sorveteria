@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Milkshake
         extends ProdutoComposto
 {
-    Tamanho tamanho;
+    private Tamanho tamanho;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Milkshake()

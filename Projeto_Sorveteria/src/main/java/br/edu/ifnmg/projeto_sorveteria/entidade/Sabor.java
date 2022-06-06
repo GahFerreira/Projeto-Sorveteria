@@ -17,9 +17,9 @@ package br.edu.ifnmg.projeto_sorveteria.entidade;
 public class Sabor
         extends Entidade
 {
-    String nome;
-    Categoria categoria;
-    Double preco;
+    private String nome;
+    private Categoria categoria;
+    private Double preco;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Sabor()

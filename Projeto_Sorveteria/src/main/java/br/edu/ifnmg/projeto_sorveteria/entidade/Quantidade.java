@@ -18,9 +18,9 @@ package br.edu.ifnmg.projeto_sorveteria.entidade;
 public class Quantidade
         extends Entidade
 {
-    Sabor sabor;
-    ProdutoComposto produtoComposto;
-    Integer quantidadeBolas;
+    private Sabor sabor;
+    private ProdutoComposto produtoComposto;
+    private Integer quantidadeBolas;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Quantidade()

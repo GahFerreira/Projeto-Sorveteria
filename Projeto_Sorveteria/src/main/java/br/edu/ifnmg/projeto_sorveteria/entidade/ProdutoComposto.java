@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public abstract class ProdutoComposto
         extends Produto
 {
-    ArrayList<Quantidade> quantidadeBolasCadaSabor;
+    private ArrayList<Quantidade> quantidadeBolasCadaSabor;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public ProdutoComposto()

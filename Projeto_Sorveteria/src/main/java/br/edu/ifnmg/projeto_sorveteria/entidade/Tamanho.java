@@ -15,8 +15,8 @@ package br.edu.ifnmg.projeto_sorveteria.entidade;
 public class Tamanho
         extends Entidade
 {
-    Integer mililitros;
-    Double preco;
+    private Integer mililitros;
+    private Double preco;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Tamanho()

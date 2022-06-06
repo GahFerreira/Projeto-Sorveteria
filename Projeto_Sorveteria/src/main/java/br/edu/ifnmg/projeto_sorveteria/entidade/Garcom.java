@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class Garcom
         extends Funcionario
 {
-    ArrayList<PedidoFisico> pedidos;
+    private ArrayList<PedidoFisico> pedidos;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Garcom()

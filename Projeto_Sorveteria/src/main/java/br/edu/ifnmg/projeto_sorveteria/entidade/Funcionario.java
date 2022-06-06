@@ -17,10 +17,10 @@ import java.time.LocalDate;
 public abstract class Funcionario
         extends Entidade
 {
-    String nome;
-    LocalDate nascimento;
-    String cpf;
-    Long telefone;
+    private String nome;
+    private LocalDate nascimento;
+    private String cpf;
+    private Long telefone;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Funcionario()

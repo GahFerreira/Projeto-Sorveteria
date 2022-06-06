@@ -17,8 +17,8 @@ import java.util.ArrayList;
 public class Sorvete
         extends ProdutoComposto
 {
-    Recipiente recipiente;
-    ArrayList<Adicional> adicionais;
+    private Recipiente recipiente;
+    private ArrayList<Adicional> adicionais;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Sorvete()

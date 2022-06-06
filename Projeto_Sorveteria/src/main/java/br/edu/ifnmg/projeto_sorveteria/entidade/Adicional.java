@@ -15,8 +15,8 @@ package br.edu.ifnmg.projeto_sorveteria.entidade;
 public class Adicional
         extends Entidade
 {
-    String nome;
-    Double preco;
+    private String nome;
+    private Double preco;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Adicional()

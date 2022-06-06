@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class Entregador
         extends Funcionario
 {
-    ArrayList<PedidoDelivery> pedidos;
+    private ArrayList<PedidoDelivery> pedidos;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Entregador()

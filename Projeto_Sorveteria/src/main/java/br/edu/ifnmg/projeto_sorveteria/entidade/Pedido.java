@@ -20,10 +20,10 @@ import java.util.ArrayList;
 public abstract class Pedido
         extends Entidade
 {
-    LocalDateTime data;
-    String cliente;
-    String formaPagamento;
-    ArrayList<Produto> produtos;
+    private LocalDateTime data;
+    private String cliente;
+    private String formaPagamento;
+    private ArrayList<Produto> produtos;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Pedido()
