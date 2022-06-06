@@ -76,7 +76,6 @@ public class MilkshakeDao
         try
         {
             milkshake = new Milkshake(resultSet.getLong("id"),
-                                      null,
                                       null);
         }
 

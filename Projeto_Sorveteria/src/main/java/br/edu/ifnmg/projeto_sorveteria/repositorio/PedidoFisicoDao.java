@@ -82,7 +82,6 @@ public class PedidoFisicoDao
                                             resultSet.getTimestamp("data").toLocalDateTime(),
                                             resultSet.getString("cliente"),
                                             resultSet.getString("formaPagamento"),
-                                            null,
                                             resultSet.getDouble("gorjeta"));
         }
 

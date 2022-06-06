@@ -84,7 +84,6 @@ public class PedidoDeliveryDao
                                                 resultSet.getTimestamp("data").toLocalDateTime(),
                                                 resultSet.getString("cliente"),
                                                 resultSet.getString("formaPagamento"),
-                                                null,
                                                 resultSet.getString("endereco"),
                                                 resultSet.getDouble("frete"));
         }

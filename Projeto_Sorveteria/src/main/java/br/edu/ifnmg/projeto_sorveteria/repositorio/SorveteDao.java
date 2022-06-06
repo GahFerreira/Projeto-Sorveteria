@@ -76,8 +76,6 @@ public class SorveteDao
         try
         {
             sorvete = new Sorvete(resultSet.getLong("id"),
-                                  null,
-                                  null,
                                   null);
         }
 
