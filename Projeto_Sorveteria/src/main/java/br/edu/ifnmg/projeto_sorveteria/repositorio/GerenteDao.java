@@ -14,7 +14,7 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Gerente no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.1, 17/05/2022
+ * @version 1.2, 08/07/2022
  */
 public class GerenteDao
         extends Dao<Gerente, Long>
@@ -55,7 +55,7 @@ public class GerenteDao
         try
         {
             pstmt.setString(1, e.getNome());
-            pstmt.setDate(2, java.sql.Date.valueOf(e.getNascimento()));
+            pstmt.setObject(2, e.getNascimento(), java.sql.Types.DATE);
             pstmt.setString(3, e.getCpf());
             pstmt.setLong(4, e.getTelefone());
             pstmt.setDouble(5, e.getSalario());

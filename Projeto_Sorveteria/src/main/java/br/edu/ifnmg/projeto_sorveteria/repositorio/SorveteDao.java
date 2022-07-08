@@ -14,7 +14,7 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Sorvete no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.0, 17/05/2022
+ * @version 1.1, 08/07/2022
  */
 public class SorveteDao
         extends Dao<Sorvete, Long>
@@ -22,25 +22,25 @@ public class SorveteDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into sorvete (recipienteId, excluido) values (?, false);";
+        return "insert into sorvete (recipiente_id, excluido) values (?, false);";
     }
 
     @Override
     public String obterSentencaUpdate()
     {
-        return "update sorvete set recipienteId = ? where id = ?;";
+        return "update sorvete set recipiente_id = ? where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select id, recipienteId from sorvete where id = ?;";
+        return "select id, recipiente_id from sorvete where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select id, recipienteId from sorvete where excluido = false;";
+        return "select id, recipiente_id from sorvete where excluido = false;";
     }
     
     @Override
@@ -73,6 +73,8 @@ public class SorveteDao
     {
         Sorvete sorvete = null;
 
+        // TODO Extrair recipiente do banco de dados
+        
         try
         {
             sorvete = new Sorvete(resultSet.getLong("id"),

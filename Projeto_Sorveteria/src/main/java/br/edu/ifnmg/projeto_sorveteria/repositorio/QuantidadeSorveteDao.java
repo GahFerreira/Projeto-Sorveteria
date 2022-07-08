@@ -11,36 +11,36 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- * Classe para realização de operações da classe Quantidade no Banco de Dados.
+ * Classe para realização de operações da classe Quantidade no Banco de Dados referente a Sorvete.
  *
  * @author GahFerreira
- * @version 1.1, 17/05/2022
+ * @version 1.0, 08/07/2022
  */
-public class QuantidadeDao
+public class QuantidadeSorveteDao
         extends Dao<Quantidade, Long>
 {   
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into quantidade (sabor_id, produtoComposto_id, quantidadeBolas, excluido) values (?, ?, ?, false);";
+        return "insert into quantidade_sorvete (sabor_id, sorvete_id, quantidade_bolas, excluido) values (?, ?, ?, false);";
     }
 
     @Override
     public String obterSentencaUpdate()
     {
-        return "update quantidade set sabor_id = ?, produtoComposto_id = ?, quantidadeBolas = ? where id = ?;";
+        return "update quantidade set sabor_id = ?, sorvete_id = ?, quantidade_bolas = ? where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select id, sabor_id, produtoComposto_id, quantidadeBolas from quantidade where id = ?;";
+        return "select id, sabor_id, sorvete_id, quantidade_bolas from quantidade where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select id, sabor_id, produtoComposto_id, quantidadeBolas from quantidade where excluido = false;";
+        return "select id, sabor_id, sorvete_id, quantidade_bolas from quantidade where excluido = false;";
     }
     
     @Override
@@ -66,7 +66,7 @@ public class QuantidadeDao
 
         catch (Exception ex)
         {
-            System.out.println("Falha na Montagem da Declaração SQL de Quantidade: " + ex);
+            System.out.println("Falha na Montagem da Declaração SQL de QuantidadeSorvete: " + ex);
         }
     }
 
@@ -86,7 +86,7 @@ public class QuantidadeDao
 
         catch (Exception ex)
         {
-            System.out.println("Erro na extração de Quantidade do Banco de Dados: " + ex);
+            System.out.println("Erro na extração de QuantidadeSorvete do Banco de Dados: " + ex);
         }
 
         return quantidade;

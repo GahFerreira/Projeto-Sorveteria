@@ -85,7 +85,6 @@ public class ConexaoBd
 
             catch (SQLException ex)
             {
-                // TODO Rever procedimento e encerrar o programa em caso de falha
                 // Registra falha
                 Logger.getLogger(ConexaoBd.class.getName()).log(Level.SEVERE, null, ex);
                 // System.exit(-1);

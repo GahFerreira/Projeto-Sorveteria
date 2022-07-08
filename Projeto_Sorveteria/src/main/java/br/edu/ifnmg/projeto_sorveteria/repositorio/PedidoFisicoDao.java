@@ -14,7 +14,7 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe PedidoFisico no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.1, 17/05/2022
+ * @version 1.2, 08/07/2022
  */
 public class PedidoFisicoDao
         extends Dao<PedidoFisico, Long>
@@ -22,31 +22,31 @@ public class PedidoFisicoDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into pedidofisico (data_, cliente, formaPagamento, gorjeta, excluido) values (?, ?, ?, ?, false);";
+        return "insert into pedido_fisico (data_, cliente, forma_pagamento, gorjeta, excluido) values (?, ?, ?, ?, false);";
     }
 
     @Override
     public String obterSentencaUpdate()
     {
-        return "update pedidofisico set data_ = ?, cliente = ?, formaPagamento = ?, gorjeta = ? where id = ?;";
+        return "update pedido_fisico set data_ = ?, cliente = ?, forma_pagamento = ?, gorjeta = ? where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select id, data_, cliente, formaPagamento, gorjeta from pessoafisica where id = ?;";
+        return "select id, data_, cliente, forma_pagamento, gorjeta from pedido_fisico where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select id, data_, cliente, formaPagamento, gorjeta from pessoafisica where excluido = false;";
+        return "select id, data_, cliente, forma_pagamento, gorjeta from pedido_fisico where excluido = false;";
     }
     
     @Override
     public String obterDeclaracaoDelete()
     {
-        return "update pedidofisico set excluido = true where id = ?;";
+        return "update pedido_fisico set excluido = true where id = ?;";
     }
 
     @Override
@@ -54,7 +54,7 @@ public class PedidoFisicoDao
     {
         try
         {
-            pstmt.setTimestamp(1, java.sql.Timestamp.valueOf(e.getData()));
+            pstmt.setObject(1, e.getData(), java.sql.Types.TIMESTAMP);
             pstmt.setString(2, e.getCliente());
             pstmt.setString(3, e.getFormaPagamento());
             pstmt.setDouble(4, e.getGorjeta());
@@ -79,9 +79,9 @@ public class PedidoFisicoDao
         try
         {
             pedidoFisico = new PedidoFisico(resultSet.getLong("id"),
-                                            resultSet.getTimestamp("data").toLocalDateTime(),
+                                            resultSet.getTimestamp("data_").toLocalDateTime(),
                                             resultSet.getString("cliente"),
-                                            resultSet.getString("formaPagamento"),
+                                            resultSet.getString("forma_pagamento"),
                                             resultSet.getDouble("gorjeta"));
         }
 

@@ -14,7 +14,7 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Tamanho no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.0, 16/05/2022
+ * @version 1.1, 08/07/2022
  */
 public class TamanhoDao
         extends Dao<Tamanho, Long>
@@ -34,13 +34,13 @@ public class TamanhoDao
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select id, mililitros, preco from ponei where id = ?;";
+        return "select id, mililitros, preco from tamanho where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select id, mililitros, preco from ponei where excluido = false;";
+        return "select id, mililitros, preco from tamanho where excluido = false;";
     }
     
     @Override

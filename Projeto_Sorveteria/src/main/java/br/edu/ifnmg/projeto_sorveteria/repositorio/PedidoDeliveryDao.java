@@ -7,7 +7,6 @@
 package br.edu.ifnmg.projeto_sorveteria.repositorio;
 
 import br.edu.ifnmg.projeto_sorveteria.entidade.PedidoDelivery;
-import br.edu.ifnmg.projeto_sorveteria.repositorio.Dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -15,7 +14,7 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe PedidoDelivery no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.1, 17/05/2022
+ * @version 1.2, 08/07/2022
  */
 public class PedidoDeliveryDao
         extends Dao<PedidoDelivery, Long>
@@ -23,31 +22,31 @@ public class PedidoDeliveryDao
     @Override
     public String obterSentencaInsert()
     {
-        return "insert into pedidodelivery (data_, cliente, formaPagamento, endereco, frete, excluido) values (?, ?, ?, ?, ?, false);";
+        return "insert into pedido_delivery (data_, cliente, forma_pagamento, endereco, frete, excluido) values (?, ?, ?, ?, ?, false);";
     }
 
     @Override
     public String obterSentencaUpdate()
     {
-        return "update pedidodelivery set data_ = ?, cliente = ?, formaPagamento = ?, endereco = ?, frete = ? where id = ?;";
+        return "update pedido_delivery set data_ = ?, cliente = ?, forma_pagamento = ?, endereco = ?, frete = ? where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarPorId()
     {
-        return "select id, data_, cliente, formaPagamento, endereco, frete from pessoafisica where id = ?;";
+        return "select id, data_, cliente, forma_pagamento, endereco, frete from pedido_delivery where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos()
     {
-        return "select id, data_, cliente, formaPagamento, endereco, frete from pessoafisica where excluido = false;";
+        return "select id, data_, cliente, forma_pagamento, endereco, frete from pedido_delivery where excluido = false;";
     }
     
     @Override
     public String obterDeclaracaoDelete()
     {
-        return "update pedidodelivery set excluido = true where id = ?;";
+        return "update pedido_delivery set excluido = true where id = ?;";
     }
 
     @Override
@@ -55,7 +54,7 @@ public class PedidoDeliveryDao
     {
         try
         {
-            pstmt.setTimestamp(1, java.sql.Timestamp.valueOf(e.getData()));
+            pstmt.setObject(1, e.getData(), java.sql.Types.TIMESTAMP);
             pstmt.setString(2, e.getCliente());
             pstmt.setString(3, e.getFormaPagamento());
             pstmt.setString(4, e.getEndereco());
@@ -81,9 +80,9 @@ public class PedidoDeliveryDao
         try
         {
             pedidoDelivery = new PedidoDelivery(resultSet.getLong("id"),
-                                                resultSet.getTimestamp("data").toLocalDateTime(),
+                                                resultSet.getTimestamp("data_").toLocalDateTime(),
                                                 resultSet.getString("cliente"),
-                                                resultSet.getString("formaPagamento"),
+                                                resultSet.getString("forma_pagamento"),
                                                 resultSet.getString("endereco"),
                                                 resultSet.getDouble("frete"));
         }
