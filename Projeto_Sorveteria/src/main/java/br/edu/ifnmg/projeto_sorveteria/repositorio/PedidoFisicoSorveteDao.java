@@ -4,12 +4,12 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria.repositorio;
 
 import br.edu.ifnmg.projeto_sorveteria.entidade.PedidoProduto;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 /**
  * Classe para realização de operações da classe PedidoProduto no Banco de Dados.
  * Essa classe DAO específica se refere a Pedido Físico e Sorvete.
@@ -17,27 +17,27 @@ import java.sql.ResultSet;
  * @author GahFerreira
  * @version 1.0, 08/07/2022
  */
-public class PedidoFisicoSorveteDao 
+public class PedidoFisicoSorveteDao        
         extends Dao<PedidoProduto, Long>
-{   
+{    
     @Override
     public String obterSentencaInsert()
     {
         return "insert into pedido_fisico_sorvete (pedido_fisico_id, sorvete_id, excluido) values (?, ?, false);";
     }
-
+    
     @Override
     public String obterSentencaUpdate()
     {
         return "update pedido_fisico_sorvete set pedido_fisico_id = ?, sorvete_id = ? where id = ?;";
     }
-
+    
     @Override
     public String obterSentencaLocalizarPorId()
     {
         return "select id, pedido_fisico_id, sorvete_id from pedido_fisico_sorvete where id = ?;";
     }
-
+    
     @Override
     public String obterSentencaLocalizarTodos()
     {
@@ -49,7 +49,7 @@ public class PedidoFisicoSorveteDao
     {
         return "update pedido_fisico_sorvete set excluido = true where id = ?;";
     }
-
+    
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, PedidoProduto e)
     {
@@ -57,37 +57,38 @@ public class PedidoFisicoSorveteDao
         {
             pstmt.setLong(1, e.getPedido().getId());
             pstmt.setLong(2, e.getProduto().getId());
-
+            
             if (e.getId() != null && e.getId() != 0)
             {
                 pstmt.setLong(3, e.getId());
             }
         }
-
+        
         catch (Exception ex)
         {
             System.out.println("Falha na Montagem da Declaração SQL de PedidoFisicoSorvete: " + ex);
         }
     }
-
+    
     @Override
     public PedidoProduto extrairObjeto(ResultSet resultSet)
     {
         PedidoProduto pedidoProduto = null;
-
+        
         try
         {
             // TODO Obter pedido & produto
 
-            pedidoProduto = new PedidoProduto(null,
-                                              null);
+            pedidoProduto = new PedidoProduto(resultSet.getLong("id"),
+                                              new PedidoFisicoDao().localizarPorId(resultSet.getLong("pedido_fisico_id")),
+                                              new SorveteDao().localizarPorId(resultSet.getLong("sorvete_id")));
         }
-
+        
         catch (Exception ex)
         {
             System.out.println("Erro na extração de PedidoFisicoSorvete do Banco de Dados: " + ex);
         }
-
+        
         return pedidoProduto;
     }
 }

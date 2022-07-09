@@ -18,25 +18,25 @@ import java.sql.ResultSet;
  */
 public class QuantidadeSorveteDao
         extends Dao<Quantidade, Long>
-{   
+{    
     @Override
     public String obterSentencaInsert()
     {
         return "insert into quantidade_sorvete (sabor_id, sorvete_id, quantidade_bolas, excluido) values (?, ?, ?, false);";
     }
-
+    
     @Override
     public String obterSentencaUpdate()
     {
         return "update quantidade set sabor_id = ?, sorvete_id = ?, quantidade_bolas = ? where id = ?;";
     }
-
+    
     @Override
     public String obterSentencaLocalizarPorId()
     {
         return "select id, sabor_id, sorvete_id, quantidade_bolas from quantidade where id = ?;";
     }
-
+    
     @Override
     public String obterSentencaLocalizarTodos()
     {
@@ -48,7 +48,7 @@ public class QuantidadeSorveteDao
     {
         return "update quantidade set excluido = true where id = ?;";
     }
-
+    
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Quantidade e)
     {
@@ -57,38 +57,37 @@ public class QuantidadeSorveteDao
             pstmt.setLong(1, e.getSabor().getId());
             pstmt.setLong(2, e.getProdutoComposto().getId());
             pstmt.setInt(3, e.getQuantidadeBolas());
-
+            
             if (e.getId() != null && e.getId() != 0)
             {
                 pstmt.setLong(4, e.getId());
             }
         }
-
+        
         catch (Exception ex)
         {
             System.out.println("Falha na Montagem da Declaração SQL de QuantidadeSorvete: " + ex);
         }
     }
-
+    
     @Override
     public Quantidade extrairObjeto(ResultSet resultSet)
     {
         Quantidade quantidade = null;
-
+        
         try
         {
-            // TODO Obter sabor e produto composto de Quantidade
-
-            quantidade = new Quantidade(null,
-                                        null,
+            quantidade = new Quantidade(resultSet.getLong("id"),
+                                        new SaborDao().localizarPorId(resultSet.getLong("sabor_id")),
+                                        new SorveteDao().localizarPorId(resultSet.getLong("sorvete_id")),
                                         resultSet.getInt("quantidadeBolas"));
         }
-
+        
         catch (Exception ex)
         {
             System.out.println("Erro na extração de QuantidadeSorvete do Banco de Dados: " + ex);
         }
-
+        
         return quantidade;
     }
 }

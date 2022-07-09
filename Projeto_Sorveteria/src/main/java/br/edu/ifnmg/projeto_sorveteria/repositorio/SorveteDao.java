@@ -14,7 +14,7 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Sorvete no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.1, 08/07/2022
+ * @version 1.2, 08/07/2022
  */
 public class SorveteDao
         extends Dao<Sorvete, Long>
@@ -78,7 +78,7 @@ public class SorveteDao
         try
         {
             sorvete = new Sorvete(resultSet.getLong("id"),
-                                  null);
+                                  new RecipienteDao().localizarPorId(resultSet.getLong("recipiente_id")));
         }
 
         catch (Exception ex)

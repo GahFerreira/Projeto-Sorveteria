@@ -76,10 +76,10 @@ public class GarcomPedidoFisicoDao
 
         try
         {
-            // TODO Obter sabor e produto composto de Quantidade
+            garcomPedidoFisico = new GarcomPedidoFisico(resultSet.getLong("id"),
+                                                        new GarcomDao().localizarPorId(resultSet.getLong("garcom_id")),
+                                                        new PedidoFisicoDao().localizarPorId(resultSet.getLong("pedido_fisico_id")));
 
-            garcomPedidoFisico = new GarcomPedidoFisico(null,
-                                                        null);
         }
 
         catch (Exception ex)

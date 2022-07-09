@@ -15,7 +15,7 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Picole no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.1, 17/05/2022
+ * @version 1.2, 08/07/2022
  */
 public class PicoleDao
         extends Dao<Picole, Long>
@@ -43,7 +43,7 @@ public class PicoleDao
     {
         return "select id, tipo, sabor_id from picole where excluido = false;";
     }
-    
+
     @Override
     public String obterDeclaracaoDelete()
     {
@@ -54,7 +54,7 @@ public class PicoleDao
     public void montarDeclaracao(PreparedStatement pstmt, Picole e)
     {
         try
-        {            
+        {
             pstmt.setString(1, e.getTipo().name());
             pstmt.setLong(2, e.getSabor().getId());
 
@@ -77,11 +77,9 @@ public class PicoleDao
 
         try
         {
-            // TODO Obter o sabor do picolé do Banco de Dados
-
             picole = new Picole(resultSet.getLong("id"),
                                 Tipo.valueOf(resultSet.getString("tipo")),
-                                null);
+                                new SaborDao().localizarPorId(resultSet.getLong("sabor_id")));
         }
 
         catch (Exception ex)

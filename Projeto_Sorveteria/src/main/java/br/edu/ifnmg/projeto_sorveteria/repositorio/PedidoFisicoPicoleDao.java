@@ -4,12 +4,12 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria.repositorio;
 
 import br.edu.ifnmg.projeto_sorveteria.entidade.PedidoProduto;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 /**
  * Classe para realização de operações da classe PedidoProduto no Banco de Dados.
  * Essa classe DAO específica se refere a Pedido Físico e Picolé.
@@ -17,9 +17,9 @@ import java.sql.ResultSet;
  * @author GahFerreira
  * @version 1.0, 08/07/2022
  */
-public class PedidoFisicoPicoleDao 
+public class PedidoFisicoPicoleDao
         extends Dao<PedidoProduto, Long>
-{   
+{
     @Override
     public String obterSentencaInsert()
     {
@@ -43,7 +43,7 @@ public class PedidoFisicoPicoleDao
     {
         return "select id, pedido_fisico_id, picole_id from pedido_fisico_picole where excluido = false;";
     }
-    
+
     @Override
     public String obterDeclaracaoDelete()
     {
@@ -79,8 +79,9 @@ public class PedidoFisicoPicoleDao
         {
             // TODO Obter pedido & produto
 
-            pedidoProduto = new PedidoProduto(null,
-                                              null);
+            pedidoProduto = new PedidoProduto(resultSet.getLong("id"),
+                                              new PedidoFisicoDao().localizarPorId(resultSet.getLong("pedido_fisico_id")),
+                                              new PicoleDao().localizarPorId(resultSet.getLong("picole_id")));
         }
 
         catch (Exception ex)

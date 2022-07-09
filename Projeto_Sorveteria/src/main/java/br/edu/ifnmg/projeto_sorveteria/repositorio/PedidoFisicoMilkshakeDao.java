@@ -4,12 +4,12 @@
  * -CompartilhaIgual 4.0 Internacional:
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package br.edu.ifnmg.projeto_sorveteria.repositorio;
 
 import br.edu.ifnmg.projeto_sorveteria.entidade.PedidoProduto;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 /**
  * Classe para realização de operações da classe PedidoProduto no Banco de Dados.
  * Essa classe DAO específica se refere a Pedido Físico e Milkshake.
@@ -17,9 +17,9 @@ import java.sql.ResultSet;
  * @author GahFerreira
  * @version 1.0, 08/07/2022
  */
-public class PedidoFisicoMilkshakeDao 
+public class PedidoFisicoMilkshakeDao
         extends Dao<PedidoProduto, Long>
-{   
+{
     @Override
     public String obterSentencaInsert()
     {
@@ -43,7 +43,7 @@ public class PedidoFisicoMilkshakeDao
     {
         return "select id, pedido_fisico_id, milkshake_id from pedido_fisico_milkshake where excluido = false;";
     }
-    
+
     @Override
     public String obterDeclaracaoDelete()
     {
@@ -79,8 +79,9 @@ public class PedidoFisicoMilkshakeDao
         {
             // TODO Obter pedido & produto
 
-            pedidoProduto = new PedidoProduto(null,
-                                              null);
+            pedidoProduto = new PedidoProduto(resultSet.getLong("id"),
+                                              new PedidoFisicoDao().localizarPorId(resultSet.getLong("pedido_fisico_id")),
+                                              new MilkshakeDao().localizarPorId(resultSet.getLong("milkshake_id")));
         }
 
         catch (Exception ex)

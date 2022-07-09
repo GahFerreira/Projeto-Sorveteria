@@ -18,7 +18,7 @@ import java.sql.ResultSet;
  */
 public class QuantidadeMilkshakeDao
         extends Dao<Quantidade, Long>
-{   
+{
     @Override
     public String obterSentencaInsert()
     {
@@ -42,7 +42,7 @@ public class QuantidadeMilkshakeDao
     {
         return "select id, sabor_id, milkshake_id, quantidade_bolas from quantidade where excluido = false;";
     }
-    
+
     @Override
     public String obterDeclaracaoDelete()
     {
@@ -77,10 +77,9 @@ public class QuantidadeMilkshakeDao
 
         try
         {
-            // TODO Obter sabor e produto composto de Quantidade
-
-            quantidade = new Quantidade(null,
-                                        null,
+            quantidade = new Quantidade(resultSet.getLong("id"),
+                                        new SaborDao().localizarPorId(resultSet.getLong("sabor_id")),
+                                        new MilkshakeDao().localizarPorId(resultSet.getLong("milkshake_id")),
                                         resultSet.getInt("quantidade_bolas"));
         }
 

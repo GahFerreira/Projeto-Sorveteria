@@ -76,10 +76,9 @@ public class EntregadorPedidoDeliveryDao
 
         try
         {
-            // TODO Obter sabor e produto composto de Quantidade
-
-            entregadorPedidoDelivery = new EntregadorPedidoDelivery(null,
-                                                                    null);
+            entregadorPedidoDelivery = new EntregadorPedidoDelivery(resultSet.getLong("id"),
+                                                                    new EntregadorDao().localizarPorId(resultSet.getLong("entregador_id")),
+                                                                    new PedidoDeliveryDao().localizarPorId(resultSet.getLong("pedido_delivery_id")));
         }
 
         catch (Exception ex)
