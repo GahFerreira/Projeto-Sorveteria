@@ -122,6 +122,19 @@ CREATE TABLE Gerente(
 
 )engine=innodb;
 
+CREATE TABLE Sorvete_Adicional(
+
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    sorvete_id BIGINT,
+    adicional_id BIGINT,
+    quantidade BIGINT,
+    UNIQUE (sorvete_id, adicional_id),
+    excluido BOOLEAN,
+    FOREIGN KEY (sorvete_id) REFERENCES Sorvete(id),
+    FOREIGN KEY (adicional_id) REFERENCES Adicional(id)
+	
+)engine=innodb;
+
 CREATE TABLE Quantidade_Sorvete(
 
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -148,23 +161,9 @@ CREATE TABLE Quantidade_Milkshake(
 	
 )engine=innodb;
 
-
 /* Tabelas N para N (Implementação não concluída para o protótipo */
 
 /*
-
-CREATE TABLE Sorvete_adicional(
-
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    sorvete_id BIGINT,
-    adicional_id BIGINT,
-    quantidade BIGINT,
-    UNIQUE (sorvete_id,adicional_id),
-    excluido BOOLEAN,
-    FOREIGN KEY (sorvete_id) REFERENCES Sorvete(id),
-    FOREIGN KEY (adicional_id) REFERENCES Adicional(id)
-	
-)engine=innodb;
 
 CREATE TABLE Sorvete_bolas(
 

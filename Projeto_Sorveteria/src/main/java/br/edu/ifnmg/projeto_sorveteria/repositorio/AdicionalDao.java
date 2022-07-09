@@ -14,7 +14,7 @@ import java.sql.ResultSet;
  * Classe para realização de operações da classe Adicional no Banco de Dados.
  *
  * @author GahFerreira
- * @version 1.0, 16/05/2022
+ * @version 1.1, 08/07/2022
  */
 public class AdicionalDao
         extends Dao<Adicional, Long>
@@ -78,7 +78,7 @@ public class AdicionalDao
         {
             adicional = new Adicional(resultSet.getLong("id"),
                                       resultSet.getString("nome"),
-                                      resultSet.getDouble("peso"));
+                                      resultSet.getDouble("preco"));
         }
 
         catch (Exception ex)
