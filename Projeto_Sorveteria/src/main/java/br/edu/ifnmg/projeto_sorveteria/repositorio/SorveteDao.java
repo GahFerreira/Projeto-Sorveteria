@@ -73,8 +73,6 @@ public class SorveteDao
     {
         Sorvete sorvete = null;
 
-        // TODO Extrair recipiente do banco de dados
-        
         try
         {
             sorvete = new Sorvete(resultSet.getLong("id"),

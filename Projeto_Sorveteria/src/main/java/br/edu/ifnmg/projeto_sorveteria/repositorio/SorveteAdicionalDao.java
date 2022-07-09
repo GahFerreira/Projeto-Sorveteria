@@ -76,8 +76,6 @@ public class SorveteAdicionalDao
         
         try
         {
-            // TODO Obter sabor e produto composto de Quantidade
-
             sorveteAdicional = new SorveteAdicional(resultSet.getLong("id"),
                                                     new SorveteDao().localizarPorId(resultSet.getLong("sorvete_id")),
                                                     new AdicionalDao().localizarPorId(resultSet.getLong("adicional_id")));

@@ -77,8 +77,6 @@ public class PedidoFisicoPicoleDao
 
         try
         {
-            // TODO Obter pedido & produto
-
             pedidoProduto = new PedidoProduto(resultSet.getLong("id"),
                                               new PedidoFisicoDao().localizarPorId(resultSet.getLong("pedido_fisico_id")),
                                               new PicoleDao().localizarPorId(resultSet.getLong("picole_id")));

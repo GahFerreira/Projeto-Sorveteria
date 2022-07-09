@@ -77,8 +77,6 @@ public class PedidoFisicoMilkshakeDao
 
         try
         {
-            // TODO Obter pedido & produto
-
             pedidoProduto = new PedidoProduto(resultSet.getLong("id"),
                                               new PedidoFisicoDao().localizarPorId(resultSet.getLong("pedido_fisico_id")),
                                               new MilkshakeDao().localizarPorId(resultSet.getLong("milkshake_id")));

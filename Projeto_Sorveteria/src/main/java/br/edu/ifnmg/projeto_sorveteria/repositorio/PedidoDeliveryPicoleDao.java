@@ -77,8 +77,6 @@ public class PedidoDeliveryPicoleDao
         
         try
         {
-            // TODO Obter pedido & produto
-
             pedidoProduto = new PedidoProduto(resultSet.getLong("id"),
                                               new PedidoDeliveryDao().localizarPorId(resultSet.getLong("pedido_delivery_id")),
                                               new PicoleDao().localizarPorId(resultSet.getLong("picole_id")));

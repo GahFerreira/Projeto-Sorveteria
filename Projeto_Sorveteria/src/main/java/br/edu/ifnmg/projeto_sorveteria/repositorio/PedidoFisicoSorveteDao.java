@@ -77,8 +77,6 @@ public class PedidoFisicoSorveteDao
         
         try
         {
-            // TODO Obter pedido & produto
-
             pedidoProduto = new PedidoProduto(resultSet.getLong("id"),
                                               new PedidoFisicoDao().localizarPorId(resultSet.getLong("pedido_fisico_id")),
                                               new SorveteDao().localizarPorId(resultSet.getLong("sorvete_id")));
